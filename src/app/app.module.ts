@@ -7,10 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { BnsIpcComponent } from './features/compare/bns-ipc/bns-ipc.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BnsIpcComponent
   ],
   imports: [
     BrowserModule,
