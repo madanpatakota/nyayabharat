@@ -30,13 +30,13 @@ export class SectionsComponent implements OnInit, OnDestroy {
         this.loading = false;
       });
   }
+  
+onSearch(event: Event) {
+  const input = event.target as HTMLInputElement;
+  this.q = input.value;
+  this.view = this.data.searchIndex(this.q, this.all);
+}
 
-  onSearch(v: KeyboardEvent) {
-    const input = v.target as HTMLInputElement;
-    const value = input.value;
-     this.q = value;
-     this.view = this.data.searchIndex(value, this.all);
-  }
 
   open(sec: LawSectionIndex) {
     this.router.navigate(['/bns/section', sec.id, sec.slug]);

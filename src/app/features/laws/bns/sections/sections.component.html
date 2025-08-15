@@ -1,34 +1,59 @@
-<section class="sections container-max" aria-labelledby="bns-sections-heading">
-  <h1 id="bns-sections-heading" class="title">BNS Sections</h1>
+<section class="bns-sections" aria-labelledby="bns-title">
+  <!-- Page heading -->
+  <header class="page-head container-max">
+    <h1 id="bns-title">BNS Sections</h1>
 
-  <div class="toolbar">
-    <div class="search">
-      <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" placeholder="Search title, number, or tag…" 
-      [value]="q" 
-      (keydown)="onSearch($event)">
-    </div>
-    <div class="chips">
-      <button *ngFor="let c of chips" class="chip">{{c}}</button>
-    </div>
-  </div>
-  
-  <div *ngIf="loading" class="grid">
-    <div class="card skeleton" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
-  </div>
-  
-  <div *ngIf="!loading" class="grid">
-    <article class="card section" *ngFor="let s of view" (click)="open(s)" tabindex="0">
-      <div class="left">
-        <div class="num">{{s.number}}</div>
-        <h3 class="ttl">{{s.title}}</h3>
-        <div class="meta">{{s.chapter}}</div>
+    <div class="tools">
+      <!-- Search -->
+      <label class="search" aria-label="Search sections">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+       <input
+  type="text"
+  placeholder="Search title, number, or tag…"
+  [value]="q"
+  (input)="onSearch($event)"
+/>
+
+      </label>
+
+      <!-- Filter chips -->
+      <div class="chips">
+        <button *ngFor="let c of chips" class="chip" type="button">{{ c }}</button>
       </div>
-      <div class="right">
-        <span class="badge" [class.ok]="s.badges.cognizable">Cognizable</span>
-        <span class="badge" [class.ok]="s.badges.bailable">Bailable</span>
-        <span class="badge" [class.ok]="s.badges.compoundable">Compoundable</span>
-      </div>
-    </article>
+    </div>
+  </header>
+
+  <!-- Loading skeletons -->
+  <div *ngIf="loading" class="grid container-max">
+    <div class="card skel" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
   </div>
+
+
+ <!-- Results -->
+<div *ngIf="!loading" class="grid container-max" role="list">
+  <a
+    *ngFor="let s of view"
+    class="card law-card"
+    role="listitem"
+    [routerLink]="['/bns/section', s.id, s.slug]"
+  >
+    <!-- Accent stripe -->
+    <span class="stripe" aria-hidden="true"></span>
+
+    <!-- Left: meta -->
+    <div class="meta">
+      <div class="badge-num">{{ s.number }}</div>
+      <h3 class="title">{{ s.title }}</h3>
+      <div class="chapter" title="{{ s.chapter }}">{{ s.chapter }}</div>
+    </div>
+
+    <!-- Right: properties -->
+    <div class="props">
+      <span class="prop" [class.ok]="s.badges.cognizable">Cognizable</span>
+      <span class="prop" [class.ok]="s.badges.bailable">Bailable</span>
+      <span class="prop" [class.ok]="s.badges.compoundable">Compoundable</span>
+    </div>
+  </a>
+</div>
+
 </section>
