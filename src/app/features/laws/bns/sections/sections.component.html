@@ -1,59 +1,71 @@
 <section class="bns-sections" aria-labelledby="bns-title">
-  <!-- Page heading -->
   <header class="page-head container-max">
     <h1 id="bns-title">BNS Sections</h1>
 
     <div class="tools">
-      <!-- Search -->
       <label class="search" aria-label="Search sections">
         <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-       <input
-  type="text"
-  placeholder="Search title, number, or tag…"
-  [value]="q"
-  (input)="onSearch($event)"
-/>
-
+        <input
+          #qref
+          type="text"
+          placeholder="Search title, number, or tag…  (Press / to focus)"
+          [value]="q"
+          (input)="onSearch($event)"
+          (focus)="bindSearchRef(qref)"
+        />
       </label>
 
-      <!-- Filter chips -->
       <div class="chips">
-        <button *ngFor="let c of chips" class="chip" type="button">{{ c }}</button>
+        <button
+          *ngFor="let c of chips"
+          class="chip"
+          [class.active]="isChipActive(c)"
+          type="button"
+          (click)="onChipClick(c)"
+        >
+          {{ c }}
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Loading skeletons -->
+  <!-- Loading -->
   <div *ngIf="loading" class="grid container-max">
     <div class="card skel" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
   </div>
 
+  <!-- Empty state -->
+  <div *ngIf="!loading && view.length === 0" class="empty container-max">
+    <div class="empty-card">
+      <i class="fa-regular fa-face-thinking"></i>
+      <h3>No results</h3>
+      <p>Try clearing filters or searching a different term.</p>
+     <button class="reset" type="button" (click)="resetFilters()">
+  Reset filters
+</button>
 
- <!-- Results -->
-<div *ngIf="!loading" class="grid container-max" role="list">
-  <a
-    *ngFor="let s of view"
-    class="card law-card"
-    role="listitem"
-    [routerLink]="['/bns/section', s.id, s.slug]"
-  >
-    <!-- Accent stripe -->
-    <span class="stripe" aria-hidden="true"></span>
-
-    <!-- Left: meta -->
-    <div class="meta">
-      <div class="badge-num">{{ s.number }}</div>
-      <h3 class="title">{{ s.title }}</h3>
-      <div class="chapter" title="{{ s.chapter }}">{{ s.chapter }}</div>
     </div>
+  </div>
 
-    <!-- Right: properties -->
-    <div class="props">
-      <span class="prop" [class.ok]="s.badges.cognizable">Cognizable</span>
-      <span class="prop" [class.ok]="s.badges.bailable">Bailable</span>
-      <span class="prop" [class.ok]="s.badges.compoundable">Compoundable</span>
-    </div>
-  </a>
-</div>
-
+  <!-- Results -->
+  <div *ngIf="!loading && view.length" class="grid container-max" role="list">
+    <a
+      *ngFor="let s of view"
+      class="card law-card"
+      role="listitem"
+      [routerLink]="['/bns/section', s.id, s.slug]"
+    >
+      <span class="stripe" aria-hidden="true"></span>
+      <div class="meta">
+        <div class="badge-num">{{ s.number }}</div>
+        <h3 class="title">{{ s.title }}</h3>
+        <div class="chapter" title="{{ s.chapter }}">{{ s.chapter }}</div>
+      </div>
+      <div class="props">
+        <span class="prop" [class.ok]="s.badges.cognizable">Cognizable</span>
+        <span class="prop" [class.ok]="s.badges.bailable">Bailable</span>
+        <span class="prop" [class.ok]="s.badges.compoundable">Compoundable</span>
+      </div>
+    </a>
+  </div>
 </section>

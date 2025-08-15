@@ -146,3 +146,27 @@ a.card{ color: inherit; text-decoration: none; } /* make anchor cards behave lik
 @media (prefers-reduced-motion: reduce){
   *{ transition:none !important; animation:none !important; }
 }
+
+
+/* Active chip state */
+.chip.active{
+  border-color: color-mix(in oklab, var(--brand) 28%, var(--border));
+  background: color-mix(in oklab, var(--brand) 10%, #fff);
+  color: var(--brand-800);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Empty state */
+.empty { display: grid; place-items: center; padding: var(--s-10) 0; }
+.empty-card{
+  text-align: center; border: 1px dashed var(--border); border-radius: 20px;
+  background: #fff; padding: var(--s-8) var(--s-6); max-width: 640px; width: 100%;
+}
+.empty-card i{ font-size: 2rem; color: var(--muted); }
+.empty-card h3{ margin: 10px 0 6px; font-weight: 900; }
+.empty-card p{ color: var(--muted); }
+.empty-card .reset{
+  margin-top: 10px; border: 1px solid var(--border); border-radius: 999px; padding: .5rem .9rem;
+  background: #fff; font-weight: 800;
+}
+.empty-card .reset:hover{ background: color-mix(in oklab, var(--brand) 6%, #fff); }
