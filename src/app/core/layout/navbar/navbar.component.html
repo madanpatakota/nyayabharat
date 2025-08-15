@@ -1,0 +1,48 @@
+<header class="nb3">
+  <div class="nb3-bar container-max">
+    <!-- Brand -->
+    <a class="brand" routerLink="/">
+      <span class="logo"><i class="fa-solid fa-scale-balanced"></i></span>
+      <span class="title">Nyayabharat</span>
+    </a>
+
+    <!-- Primary (desktop) -->
+    <nav class="primary d-none d-lg-flex">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      <a routerLink="/explore" routerLinkActive="active">Explore</a>
+      <a routerLink="/smart" routerLinkActive="active">Smart</a>
+      <a routerLink="/learn" routerLinkActive="active">Learn</a>
+      <a routerLink="/assistance" routerLinkActive="active">Assistance</a>
+      <a routerLink="/articles" routerLinkActive="active">Articles</a>
+      <a routerLink="/saved" routerLinkActive="active">Saved</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="icon" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <button class="icon" title="Theme"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      <a class="cta d-none d-md-inline-flex" routerLink="/auth"><i class="fa-solid fa-user"></i><span>Login</span></a>
+      <button class="icon d-lg-none" (click)="toggle()" [attr.aria-expanded]="open" aria-label="Menu">
+        <i class="fa-solid" [ngClass]="open ? 'fa-xmark' : 'fa-bars'"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="drawer-back d-lg-none" [class.open]="open" (click)="close()">
+    <nav class="drawer card" (click)="$event.stopPropagation()">
+      <div class="head">
+        <span class="logo sm"><i class="fa-solid fa-scale-balanced"></i></span>
+        <strong>Nyayabharat</strong>
+      </div>
+      <a routerLink="/" (click)="close()" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+      <a routerLink="/explore" (click)="close()" routerLinkActive="active">Explore</a>
+      <a routerLink="/smart" (click)="close()" routerLinkActive="active">Smart</a>
+      <a routerLink="/learn" (click)="close()" routerLinkActive="active">Learn</a>
+      <a routerLink="/assistance" (click)="close()" routerLinkActive="active">Assistance</a>
+      <a routerLink="/articles" (click)="close()" routerLinkActive="active">Articles</a>
+      <a routerLink="/saved" (click)="close()" routerLinkActive="active">Saved</a>
+      <a routerLink="/auth" class="cta block" (click)="close()"><i class="fa-solid fa-user"></i><span>Login</span></a>
+    </nav>
+  </div>
+</header>

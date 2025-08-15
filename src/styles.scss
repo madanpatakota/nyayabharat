@@ -1,1 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== MISARD THEME — PREMIUM ===== */
+
+/* Brand palette */
+:root{
+  --brand:#144264; --brand-600:#103450; --brand-700:#0b283e;
+  --accent:#EE6C4D; --accent-2:#6E9BF5;
+
+  --bg:#f4f8fc; --surface:#ffffff; --ink:#0a1420; --muted:#5e6a79; --border:#e6edf5;
+
+  --radius-3xl:24px; --radius-2xl:20px; --radius-xl:16px; --radius-lg:14px; --radius:12px;
+  --shadow-sm:0 2px 10px rgba(16,24,40,.06);
+  --shadow:0 12px 30px rgba(16,24,40,.10);
+  --shadow-lg:0 24px 60px rgba(16,24,40,.14);
+
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-7:28px; --s-8:32px; --s-9:40px; --s-10:48px; --s-12:64px;
+
+  --font-s:clamp(12px,.9vw,14px);
+  --font-m:clamp(14px,1vw,16px);
+  --font-l:clamp(16px,1.2vw,18px);
+  --font-xl:clamp(18px,1.6vw,22px);
+  --font-2xl:clamp(26px,2.6vw,34px);
+  --font-3xl:clamp(36px,4.2vw,56px);
+
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --t-fast:120ms; --t:220ms; --t-slow:420ms;
+}
+
+/* Dark theme hook (optional later) */
+.theme-dark{ --bg:#0a0f16; --surface:#0f1620; --ink:#eaf0f6; --muted:#9fb0c4; --border:#223046; }
+
+html, body { height:100%; }
+body{
+  background: radial-gradient(1200px 800px at 15% -200px, rgba(20,66,100,.12), transparent),
+              radial-gradient(900px 600px at 85% -150px, rgba(110,155,245,.10), transparent),
+              var(--bg);
+  color:var(--ink);
+  font-size:var(--font-m);
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+
+a{ color:var(--brand); text-decoration:none; }
+a:hover{ color:var(--brand-600); }
+
+.container-max{ width:100%; max-width:1240px; margin-inline:auto; padding-inline:var(--s-6); }
+
+/* Glass & gradient helpers */
+.glass{
+  background: color-mix(in oklab, var(--surface), rgba(255,255,255,.6) 20%);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+}
+.brand-gradient { background: linear-gradient(90deg, var(--brand), var(--brand-700)); }
+.brand-wash { background: linear-gradient(180deg, rgba(20,66,100,.04), transparent); }
+
+/* Buttons */
+.btn-misard{
+  display:inline-flex; align-items:center; gap:10px; padding:.78rem 1.1rem;
+  border-radius:18px; font-weight:700; border:1px solid transparent;
+  background:var(--brand); color:#fff; box-shadow:var(--shadow-sm);
+  transition:transform var(--t) var(--ease), box-shadow var(--t) var(--ease), background var(--t) var(--ease);
+}
+.btn-misard:hover{ transform:translateY(-1px); box-shadow:var(--shadow); background:var(--brand-600); }
+.btn-ghost{
+  display:inline-flex; align-items:center; gap:10px; padding:.78rem 1.1rem; font-weight:700;
+  border:1px solid var(--border); color:var(--ink); background:var(--surface); border-radius:18px;
+  transition:box-shadow var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.btn-ghost:hover{ box-shadow:var(--shadow-sm); transform:translateY(-1px); }
+
+/* Animated underline (nav active) */
+@keyframes nb-underline {
+  0% { transform:scaleX(0); }
+  100% { transform:scaleX(1); }
+}
+
+/* Floating soft lights (hero) */
+@keyframes soft-float {
+  0%,100% { transform:translateY(0) translateX(0); opacity:.9; }
+  50% { transform:translateY(-6px) translateX(4px); opacity:1; }
+}
