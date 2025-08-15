@@ -1,0 +1,16 @@
+[
+  {
+    "caseName": "State v. R",
+    "court": "SC",
+    "year": 2019,
+    "citation": "AIR 2019 SC 1234",
+    "summary": "Clarified 'moving property' completes theft."
+  },
+  {
+    "caseName": "M v. State",
+    "court": "HC",
+    "year": 2016,
+    "citation": "2016 CriLJ 4321",
+    "summary": "Dishonest intention inferred from conduct."
+  }
+]

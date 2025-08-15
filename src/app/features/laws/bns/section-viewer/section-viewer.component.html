@@ -6,10 +6,10 @@
       <h1 class="title h-hero" data-anim>{{title}}</h1>
       <p class="subtitle">Section {{number}} — Nyayabharat</p>
       <div class="tools">
-        <button class="chip" title="Bookmark"><i class="fa-regular fa-bookmark"></i> Save</button>
-        <button class="chip" title="Share"><i class="fa-solid fa-share-nodes"></i> Share</button>
-        <button class="chip" title="Print" (click)="print()"><i class="fa-solid fa-print"></i> Print</button>
-        <button class="chip" title="Text‑to‑Speech" (click)="speak()"><i class="fa-solid fa-volume-high"></i> Read</button>
+        <button class="chip"><i class="fa-regular fa-bookmark"></i> Save</button>
+        <button class="chip"><i class="fa-solid fa-share-nodes"></i> Share</button>
+        <button class="chip" (click)="print()"><i class="fa-solid fa-print"></i> Print</button>
+        <button class="chip" (click)="speak()"><i class="fa-solid fa-volume-high"></i> Read</button>
       </div>
     </div>
     <div class="hero-waves"></div>
@@ -17,18 +17,17 @@
 
   <div class="container-max content-wrap">
     <!-- Tabs -->
-   <nav id="tabs" class="tabs" role="tablist" aria-label="Section tabs">
-  <button role="tab" [attr.aria-selected]="tab==='overview'"   [class.active]="tab==='overview'"   (click)="setTab('overview')">Overview</button>
-  <button role="tab" [attr.aria-selected]="tab==='punishment'" [class.active]="tab==='punishment'" (click)="setTab('punishment')">Punishment</button>
-  <button role="tab" [attr.aria-selected]="tab==='examples'"   [class.active]="tab==='examples'"   (click)="setTab('examples')">Examples</button>
-  <button role="tab" [attr.aria-selected]="tab==='history'"    [class.active]="tab==='history'"    (click)="setTab('history')">History</button>
-  <button role="tab" [attr.aria-selected]="tab==='judgments'"  [class.active]="tab==='judgments'"  (click)="setTab('judgments')">Judgments</button>
-  <button role="tab" [attr.aria-selected]="tab==='related'"    [class.active]="tab==='related'"    (click)="setTab('related')">Related</button>
-  <button role="tab" [attr.aria-selected]="tab==='crosswalk'"  [class.active]="tab==='crosswalk'"  (click)="setTab('crosswalk')">IPC ↔ BNS</button>
-</nav>
+    <nav id="tabs" class="tabs" role="tablist" aria-label="Section tabs">
+      <button role="tab" [attr.aria-selected]="tab==='overview'"   [class.active]="tab==='overview'"   (click)="setTab('overview')">Overview</button>
+      <button role="tab" [attr.aria-selected]="tab==='punishment'" [class.active]="tab==='punishment'" (click)="setTab('punishment')">Punishment</button>
+      <button role="tab" [attr.aria-selected]="tab==='examples'"   [class.active]="tab==='examples'"   (click)="setTab('examples')">Examples</button>
+      <button role="tab" [attr.aria-selected]="tab==='history'"    [class.active]="tab==='history'"    (click)="setTab('history')">History</button>
+      <button role="tab" [attr.aria-selected]="tab==='judgments'"  [class.active]="tab==='judgments'"  (click)="setTab('judgments')">Judgments</button>
+      <button role="tab" [attr.aria-selected]="tab==='related'"    [class.active]="tab==='related'"    (click)="setTab('related')">Related</button>
+      <button role="tab" [attr.aria-selected]="tab==='crosswalk'"  [class.active]="tab==='crosswalk'"  (click)="setTab('crosswalk')">IPC ↔ BNS</button>
+    </nav>
 
-
-    <!-- Panels -->
+    <!-- Overview -->
     <div class="panel" *ngIf="tab==='overview'">
       <article class="card">
         <h2 class="h-1">Explanation</h2>
@@ -36,6 +35,7 @@
       </article>
     </div>
 
+    <!-- Punishment -->
     <div class="panel" *ngIf="tab==='punishment'">
       <article class="card">
         <h2 class="h-1">Punishment</h2>
@@ -50,9 +50,100 @@
       </article>
     </div>
 
-    <div class="panel" *ngIf="tab!=='overview' && tab!=='punishment'">
-      <article class="card muted-card">
-        <p class="muted">This tab is a placeholder. We’ll connect data next.</p>
+    <!-- Examples -->
+    <div class="panel" *ngIf="tab==='examples'">
+      <article class="card">
+        <h2 class="h-1">Illustrative Examples</h2>
+        <div class="examples">
+          <div class="ex" *ngFor="let e of examples">
+            <div class="ex-title"><i class="fa-regular fa-lightbulb"></i> {{e.title}}</div>
+            <div class="ex-facts">{{e.facts}}</div>
+            <div class="ex-outcome"><strong>Outcome:</strong> {{e.outcome}}</div>
+          </div>
+        </div>
+        <div *ngIf="isLoading.examples" class="loading">Loading…</div>
+      </article>
+    </div>
+
+    <!-- History -->
+    <div class="panel" *ngIf="tab==='history'">
+      <article class="card">
+        <h2 class="h-1">History & Notes</h2>
+        <ul class="timeline">
+          <li *ngFor="let h of history">
+            <span class="year">{{h.year}}</span>
+            <span class="chg">{{h.change}}</span>
+          </li>
+        </ul>
+        <div *ngIf="isLoading.history" class="loading">Loading…</div>
+      </article>
+    </div>
+
+    <!-- Judgments -->
+    <div class="panel" *ngIf="tab==='judgments'">
+      <article class="card">
+        <h2 class="h-1">Key Judgments</h2>
+        <div class="judgments">
+          <div class="judg" *ngFor="let j of judgments">
+            <div class="row1">
+              <span class="court" [class.sc]="j.court==='SC'" [class.hc]="j.court==='HC'">{{j.court}}</span>
+              <span class="name">{{j.caseName}}</span>
+              <span class="year">{{j.year}}</span>
+            </div>
+            <div class="row2">
+              <span class="cite">{{j.citation}}</span>
+              <span class="sum" *ngIf="j.summary">— {{j.summary}}</span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="isLoading.judgments" class="loading">Loading…</div>
+      </article>
+    </div>
+
+    <!-- Related -->
+    <!-- Related -->
+<div class="panel" *ngIf="tab==='related'">
+  <article class="card">
+    <h2 class="h-1">Related Sections</h2>
+    <div class="chips">
+      <a class="chip link"
+         *ngFor="let r of related"
+         [routerLink]="buildSectionLink(r)">
+        {{ r?.number }} — {{ r?.title }}
+      </a>
+    </div>
+    <div *ngIf="isLoading.related" class="loading">Loading…</div>
+  </article>
+</div>
+
+
+    <!-- Crosswalk -->
+    <div class="panel" *ngIf="tab==='crosswalk'">
+      <article class="card">
+        <h2 class="h-1">IPC ↔ BNS Mapping</h2>
+        <div class="crosswalk" *ngIf="crosswalk as cw">
+          <div class="map">
+            <div class="left">
+              <div class="pill">BNS</div>
+              <div class="entry">
+                <div class="num">{{number}}</div>
+                <div class="ttl">{{title}}</div>
+              </div>
+            </div>
+            <div class="arrow"><i class="fa-solid fa-right-left"></i></div>
+            <div class="right">
+              <div class="pill">{{cw.legacy.code}}</div>
+              <div class="entry">
+                <div class="num">{{cw.legacy.number}}</div>
+                <div class="ttl">{{cw.legacy.title}}</div>
+              </div>
+            </div>
+          </div>
+          <ul class="notes" *ngIf="cw.notes?.length">
+            <li *ngFor="let n of cw.notes">{{n}}</li>
+          </ul>
+        </div>
+        <div *ngIf="isLoading.crosswalk" class="loading">Loading…</div>
       </article>
     </div>
   </div>
