@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { BnsIpcComponent } from './features/compare/bns-ipc/bns-ipc.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BnsIpcComponent } from './features/compare/bns-ipc/bns-ipc.component';
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

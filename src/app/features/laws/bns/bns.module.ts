@@ -13,6 +13,7 @@ import { TabJudgmentsComponent } from './tabs/tab-judgments/tab-judgments.compon
 import { TabRelatedComponent } from './tabs/tab-related/tab-related.component';
 import { TabCrosswalkComponent } from './tabs/tab-crosswalk/tab-crosswalk.component';
 import { SectionToolbarComponent } from './partials/section-toolbar/section-toolbar.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { SectionToolbarComponent } from './partials/section-toolbar/section-tool
   ],
   imports: [
     CommonModule,
+    RouterModule,
     BnsRoutingModule
   ]
 })

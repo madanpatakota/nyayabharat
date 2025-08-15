@@ -1,0 +1,20 @@
+[
+  {
+    "id": 101,
+    "number": "BNS 101",
+    "slug": "theft",
+    "title": "Theft",
+    "chapter": "Chapter XVII - Offences against Property",
+    "tags": ["property", "theft", "movable"],
+    "badges": { "cognizable": true, "bailable": false, "compoundable": false }
+  },
+  {
+    "id": 102,
+    "number": "BNS 102",
+    "slug": "robbery",
+    "title": "Robbery",
+    "chapter": "Chapter XVII - Offences against Property",
+    "tags": ["robbery", "violence"],
+    "badges": { "cognizable": true, "bailable": false, "compoundable": false }
+  }
+]

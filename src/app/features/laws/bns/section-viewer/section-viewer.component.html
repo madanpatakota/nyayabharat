@@ -1,1 +1,39 @@
-<p>section-viewer works!</p>
+<section class="viewer container-max" *ngIf="!loading; else sk">
+  <header class="head">
+    <div class="title">
+      <div class="num">{{number}}</div>
+      <h1>{{title}}</h1>
+    </div>
+    <div class="tools">
+      <button class="chip"><i class="fa-regular fa-bookmark"></i> Save</button>
+      <button class="chip"><i class="fa-solid fa-share-nodes"></i> Share</button>
+      <button class="chip"><i class="fa-solid fa-print"></i> Print</button>
+      <button class="chip"><i class="fa-solid fa-volume-high"></i> Read</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button [class.active]="tab==='overview'" (click)="setTab('overview')">Overview</button>
+    <button [class.active]="tab==='punishment'" (click)="setTab('punishment')">Punishment</button>
+    <button [class.active]="tab==='examples'" (click)="setTab('examples')">Examples</button>
+    <button [class.active]="tab==='history'" (click)="setTab('history')">History</button>
+    <button [class.active]="tab==='judgments'" (click)="setTab('judgments')">Judgments</button>
+    <button [class.active]="tab==='related'" (click)="setTab('related')">Related</button>
+    <button [class.active]="tab==='crosswalk'" (click)="setTab('crosswalk')">Crosswalk</button>
+  </nav>
+
+  <article class="content" *ngIf="tab==='overview'">
+    <p class="lead">{{body}}</p>
+  </article>
+
+  <article class="content" *ngIf="tab!=='overview'">
+    <p class="muted">This tab is a placeholder. We’ll load tab-specific JSON next.</p>
+  </article>
+</section>
+
+<ng-template #sk>
+  <div class="viewer container-max">
+    <div class="sk-head"></div>
+    <div class="sk-body"></div>
+  </div>
+</ng-template>

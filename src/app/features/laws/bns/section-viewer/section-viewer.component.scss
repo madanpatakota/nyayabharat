@@ -1,0 +1,19 @@
+.viewer { padding: calc(82px + var(--s-8)) var(--s-6) var(--s-10); }
+.head { display:grid; grid-template-columns: 1fr auto; gap: var(--s-4); align-items:center; }
+.title .num { color: var(--brand); font-weight:900; }
+.title h1 { font-family: var(--font-heading); font-weight:900; margin:.2rem 0; }
+
+.tools { display:flex; gap:10px; flex-wrap:wrap; }
+.chip { border:1px solid var(--border); border-radius:999px; padding:.5rem .9rem; background:#fff; font-weight:800; }
+.chip i { margin-right:8px; }
+
+.tabs { display:flex; gap:10px; margin-top:var(--s-6); border-bottom:1px solid var(--border); padding-bottom:10px; }
+.tabs button { border:0; background:#fff; padding:.6rem .9rem; border-radius:14px; font-weight:800; color:var(--muted); }
+.tabs button.active { background: linear-gradient(90deg, var(--brand), var(--brand-700)); color:#fff; box-shadow: var(--shadow-sm); }
+
+.content { margin-top: var(--s-6); background:#fff; border:1px solid var(--border); border-radius:20px; padding: var(--s-6); }
+.lead { font-size: var(--font-l); }
+.muted { color: var(--muted); }
+
+.sk-head, .sk-body { height: 140px; border-radius: 20px; background: linear-gradient(90deg, #f0f4f9 25%, #ffffff 37%, #f0f4f9 63%); background-size: 400% 100%; animation: sk 1.2s ease infinite; margin-top: var(--s-6); }
+@keyframes sk { 0%{background-position: 0 0;} 100%{background-position: -135% 0;} }

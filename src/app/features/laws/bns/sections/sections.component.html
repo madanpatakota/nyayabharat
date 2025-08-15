@@ -1,1 +1,34 @@
-<p>sections works!</p>
+<section class="sections container-max" aria-labelledby="bns-sections-heading">
+  <h1 id="bns-sections-heading" class="title">BNS Sections</h1>
+
+  <div class="toolbar">
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search title, number, or tag…" 
+      [value]="q" 
+      (keydown)="onSearch($event)">
+    </div>
+    <div class="chips">
+      <button *ngFor="let c of chips" class="chip">{{c}}</button>
+    </div>
+  </div>
+  
+  <div *ngIf="loading" class="grid">
+    <div class="card skeleton" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
+  </div>
+  
+  <div *ngIf="!loading" class="grid">
+    <article class="card section" *ngFor="let s of view" (click)="open(s)" tabindex="0">
+      <div class="left">
+        <div class="num">{{s.number}}</div>
+        <h3 class="ttl">{{s.title}}</h3>
+        <div class="meta">{{s.chapter}}</div>
+      </div>
+      <div class="right">
+        <span class="badge" [class.ok]="s.badges.cognizable">Cognizable</span>
+        <span class="badge" [class.ok]="s.badges.bailable">Bailable</span>
+        <span class="badge" [class.ok]="s.badges.compoundable">Compoundable</span>
+      </div>
+    </article>
+  </div>
+</section>

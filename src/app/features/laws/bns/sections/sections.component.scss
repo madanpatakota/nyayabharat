@@ -1,0 +1,48 @@
+.sections { padding: calc(82px + var(--s-8)) var(--s-6) var(--s-10); }
+.title { font-family: var(--font-heading); font-size: var(--font-2xl); font-weight: 900; margin-bottom: var(--s-4); }
+
+.toolbar {
+  display: grid; gap: var(--s-4);
+  grid-template-columns: 1fr auto; align-items: center; margin-bottom: var(--s-6);
+  @media (max-width: 768px){ grid-template-columns: 1fr; }
+}
+
+.search {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid var(--border); background: #fff; border-radius: 16px; padding: .6rem .9rem;
+  i { color: var(--muted); }
+  input { border: 0; outline: 0; width: 100%; font-weight: 600; background: transparent; }
+}
+
+.chips { display: flex; gap: 10px; flex-wrap: wrap; }
+.chip {
+  border: 1px solid var(--border); background: #fff; border-radius: 999px; padding: .45rem .8rem; font-weight: 800; color: var(--muted);
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.chip:hover{ transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+
+.grid {
+  display: grid; gap: var(--s-4);
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  @media (max-width: 1200px){ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  @media (max-width: 768px){ grid-template-columns: 1fr; }
+}
+
+.card {
+  border: 1px solid var(--border); border-radius: 20px; background: #fff; padding: var(--s-5);
+  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t) var(--ease);
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: color-mix(in oklab, var(--brand) 14%, var(--border)); cursor: pointer; }
+
+.section { display: grid; grid-template-columns: 1fr auto; gap: var(--s-4); align-items: center; }
+.num { font-weight: 900; color: var(--brand); }
+.ttl { font-weight: 900; margin: 6px 0 2px; }
+.meta { color: var(--muted); font-weight: 600; }
+
+.badge {
+  display: inline-block; padding: .3rem .6rem; border-radius: 999px; background: #f3f6fb; color: #9aa8bb; font-weight: 800; margin-left: 6px;
+  &.ok { background: color-mix(in oklab, var(--brand) 10%, #fff); color: var(--brand-700); }
+}
+
+.skeleton { height: 120px; background: linear-gradient(90deg, #f0f4f9 25%, #ffffff 37%, #f0f4f9 63%); background-size: 400% 100%; animation: sk 1.2s ease infinite; }
+@keyframes sk { 0%{background-position: 0 0;} 100%{background-position: -135% 0;} }
