@@ -23,12 +23,19 @@
 
   --ease:cubic-bezier(.2,.8,.2,1);
   --t-fast:120ms; --t:220ms; --t-slow:420ms;
+
+  --font-heading: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
 }
 
 /* Dark theme hook (optional later) */
 .theme-dark{ --bg:#0a0f16; --surface:#0f1620; --ink:#eaf0f6; --muted:#9fb0c4; --border:#223046; }
 
-html, body { height:100%; }
+html, body { font-family: var(--font-body);height:100%; }
+
+h1, h2, h3, .nb-title, .tabs button { font-family: var(--font-heading); }
+
 body{
   background: radial-gradient(1200px 800px at 15% -200px, rgba(20,66,100,.12), transparent),
               radial-gradient(900px 600px at 85% -150px, rgba(110,155,245,.10), transparent),
@@ -112,6 +119,9 @@ main {
 
 /* Only transform/opacity, no layout thrash */
 *[data-anim] { will-change: transform, opacity; }
+
+.app-shell main{ margin-top: 0 !important; padding-top: 0 !important; }
+
 
 
 

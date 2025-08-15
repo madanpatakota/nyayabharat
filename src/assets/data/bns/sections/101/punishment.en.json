@@ -1,0 +1,10 @@
+{
+  "id": 101,
+  "minimum": "Simple imprisonment up to 3 years",
+  "maximum": "Rigorous imprisonment up to 7 years",
+  "fine": "Fine at the court's discretion",
+  "notes": [
+    "First-time offenders may receive lesser punishment with reasons recorded.",
+    "If theft involves dwelling-house at night, enhanced punishment applies."
+  ]
+}

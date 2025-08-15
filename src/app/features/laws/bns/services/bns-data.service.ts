@@ -26,4 +26,11 @@ export class BnsDataService {
       x.tags.some(t => t.toLowerCase().includes(s))
     );
   }
+
+  getPunishment(id: number, lang: 'en' | 'hi' = 'en') {
+  return this.http.get<{id:number; minimum?:string; maximum?:string; fine?:string; notes?:string[]}>(
+    `${this.base}/sections/${id}/punishment.${lang}.json`
+  );
+}
+
 }

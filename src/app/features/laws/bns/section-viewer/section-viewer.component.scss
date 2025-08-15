@@ -1,19 +1,86 @@
-.viewer { padding: calc(82px + var(--s-8)) var(--s-6) var(--s-10); }
-.head { display:grid; grid-template-columns: 1fr auto; gap: var(--s-4); align-items:center; }
-.title .num { color: var(--brand); font-weight:900; }
-.title h1 { font-family: var(--font-heading); font-weight:900; margin:.2rem 0; }
+/* ---- Section Viewer (BNS) ---- */
+.viewer{ padding-top: 0; }
 
-.tools { display:flex; gap:10px; flex-wrap:wrap; }
-.chip { border:1px solid var(--border); border-radius:999px; padding:.5rem .9rem; background:#fff; font-weight:800; }
-.chip i { margin-right:8px; }
+/* Hero header */
+.hero{
+  position: relative; color: #fff; margin-top: 0;
+}
+.hero .hero-inner{
+  padding: var(--s-12) var(--s-6) var(--s-6);
+}
+.hero .crumbs{ opacity:.85; font-weight:700; }
+.hero .crumbs a{ color:#fff; opacity:.9; }
+.hero .title{ font-weight:900; margin:.4rem 0; }
+.hero .subtitle{ opacity:.85; font-weight:700; }
+.hero .tools{
+  margin-top: var(--s-5); display:flex; gap:10px; flex-wrap:wrap;
+}
+.hero .tools .chip{
+  border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:.5rem .9rem;
+  background: rgba(255,255,255,.12); color:#fff; font-weight:800;
+  transition: transform var(--t) var(--ease), background var(--t) var(--ease);
+}
+.hero .tools .chip:hover{ transform: translateY(-1px); background: rgba(255,255,255,.2); }
+.hero .hero-waves{
+  height: 32px; width: 100%;
+  background:
+    radial-gradient(1200px 240px at 20% -60px, rgba(255,255,255,.28), transparent),
+    radial-gradient(1200px 240px at 80% -60px, rgba(255,255,255,.18), transparent);
+}
 
-.tabs { display:flex; gap:10px; margin-top:var(--s-6); border-bottom:1px solid var(--border); padding-bottom:10px; }
-.tabs button { border:0; background:#fff; padding:.6rem .9rem; border-radius:14px; font-weight:800; color:var(--muted); }
-.tabs button.active { background: linear-gradient(90deg, var(--brand), var(--brand-700)); color:#fff; box-shadow: var(--shadow-sm); }
+/* Content */
+.content-wrap{ padding: var(--s-6); }
 
-.content { margin-top: var(--s-6); background:#fff; border:1px solid var(--border); border-radius:20px; padding: var(--s-6); }
-.lead { font-size: var(--font-l); }
-.muted { color: var(--muted); }
+/* Tabs: sticky with pill indicator */
+/* Tabs: premium capsule buttons, sticky under navbar */
+.tabs{
+  position: sticky; top: 82px; z-index: 10;
+  display: flex; flex-wrap: wrap; gap: 8px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px;
+  box-shadow: var(--shadow-sm);
+}
 
-.sk-head, .sk-body { height: 140px; border-radius: 20px; background: linear-gradient(90deg, #f0f4f9 25%, #ffffff 37%, #f0f4f9 63%); background-size: 400% 100%; animation: sk 1.2s ease infinite; margin-top: var(--s-6); }
-@keyframes sk { 0%{background-position: 0 0;} 100%{background-position: -135% 0;} }
+.tabs button{
+  border: 0;
+  background: transparent;
+  padding: .72rem 1.0rem;
+  border-radius: 999px;
+  font-weight: 900;
+  color: var(--muted);
+  transition: background var(--t) var(--ease), color var(--t) var(--ease), transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+
+.tabs button:hover{ background: color-mix(in oklab, var(--brand) 8%, #fff); color: var(--ink); transform: translateY(-1px); }
+
+.tabs button.active{
+  color: #fff;
+  background: linear-gradient(90deg, var(--brand), var(--brand-700));
+  box-shadow: 0 10px 24px rgba(20,66,100,.18);
+}
+
+/* Panels */
+.panel .card{
+  border:1px solid var(--border); border-radius: 20px; background:#fff; padding: var(--s-6);
+  box-shadow: var(--shadow-sm); animation: fadeUp .28s var(--ease);
+}
+.lead{ font-size: var(--font-l); color: var(--ink); }
+.muted-card{ background: #fff; }
+.muted{ color: var(--muted); }
+
+.punish{ display:grid; gap:8px; margin:0; padding:0; list-style:none; }
+.punish li strong{ color: var(--brand); }
+.notes{ margin-top: var(--s-4); padding-left: 1.2rem; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .tabs{ top: 74px; grid-template-columns: repeat(3, 1fr); row-gap: 6px; height:auto; border-radius: 20px; }
+  .tabs .pill{ display:none; }
+}
