@@ -78,3 +78,41 @@ a:hover{ color:var(--brand-600); }
   0%,100% { transform:translateY(0) translateX(0); opacity:.9; }
   50% { transform:translateY(-6px) translateX(4px); opacity:1; }
 }
+
+:root{
+  --font-heading: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+html, body { font-family: var(--font-body); }
+.h-hero, .nb-title, .nb-primary a, h1,h2,h3 { font-family: var(--font-heading); }
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Smooth scroll + focus rings */
+html { scroll-behavior: smooth; }
+:focus-visible { outline: 3px solid color-mix(in oklab, var(--brand) 60%, #fff); outline-offset: 3px; border-radius: 10px; }
+
+/* Mobile density & tap targets */
+@media (max-width: 768px){
+  .nb3 .primary { display:none !important; } /* desktop menu hidden */
+  .nb3 .actions .cta { display:none !important; } /* login text hidden (drawer has it) */
+  button, .nb-icon, .fab { min-height: 44px; min-width: 44px; } /* Apple HIG size */
+}
+
+/* Subtle hero canvas across pages until content arrives */
+main {
+  background:
+    radial-gradient(1200px 800px at 10% -200px, rgba(20,66,100,.10), transparent),
+    radial-gradient(900px 600px at 90% -150px, rgba(110,155,245,.08), transparent),
+    var(--bg);
+}
+
+/* Only transform/opacity, no layout thrash */
+*[data-anim] { will-change: transform, opacity; }
+
+
+
+
