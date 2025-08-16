@@ -155,10 +155,12 @@
 <!-- Mobile Drawer -->
 <div class="drawer-back d-lg-none" [class.open]="open" (click)="close()">
   <nav class="drawer card" (click)="$event.stopPropagation()">
-    <div class="head">
-      <span class="logo sm"><i class="fa-solid fa-scale-balanced"></i></span>
-      <strong>Nyayabharat</strong>
-    </div>
+   <div class="head">
+  <span class="logo sm"><i class="fa-solid fa-scale-balanced"></i></span>
+  <strong>Nyayabharat</strong>
+  <button class="icon close" (click)="close()"><i class="fa-solid fa-xmark"></i></button>
+</div>
+
 
     <a routerLink="/" (click)="close()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
     <a routerLink="/explore" (click)="close()" routerLinkActive="active">Explore</a>
