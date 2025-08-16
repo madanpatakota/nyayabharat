@@ -21,14 +21,7 @@
 /* navbar.component.scss */
 
 /* existing navbar styles... */
-.nb3-bar {
-  background: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: .5rem 1rem;
-  overflow: visible; /* ✅ allow dropdown to show */
-}
+
 
 .nb3 {
   z-index: 1200; /* ✅ keep navbar on top */
@@ -44,8 +37,7 @@
 }
 
 .mega-wrap { 
-  display: flex; 
-  align-items: center; 
+ position:static;
 }
 
 .mega-trigger {
@@ -117,16 +109,25 @@
 /* ==== Mega dropdown for Explore (desktop) ==== */
 .mega-wrap{ position: relative; }
 .mega-trigger{ position: relative; z-index: 3; } /* keep above panel edge */
+
 .mega-panel{
-  position:absolute; left:50%; transform:translateX(-50%);
-  top:calc(100% + 14px);
-  width:min(1100px, 96vw);
-  opacity:0; pointer-events:none; translate:0 -6px;
-  transition:opacity var(--t) var(--ease), translate var(--t) var(--ease), filter var(--t) var(--ease);
+  position: fixed;
+  top: calc(var(--nb-h) + 14px);     /* sit just under the bar */
+  left: 50%;
+  transform: translateX(-50%);       /* center to viewport */
+  width: min(1100px, 96vw);
+
+  opacity: 0;
+  pointer-events: none;
+  translate: 0 -6px;
+  transition: opacity var(--t) var(--ease), translate var(--t) var(--ease), filter var(--t) var(--ease);
   filter: drop-shadow(0 24px 60px rgba(16,24,40,.16));
-  z-index:1300;
+  z-index: 1300; 
 }
-.mega-panel.open{ opacity:1; pointer-events:auto; translate:0 0; }
+
+.mega-panel.open{ opacity:1; 
+  pointer-events:auto; translate:0 0; }
+
 
 .mega-inner{
   border:1px solid var(--border); border-radius:20px; overflow:hidden;
@@ -280,27 +281,35 @@
 /* Compact nav on scroll (optional) */
 :host-context(body.scrolled) .nb3-bar{ height: 72px; transition: height var(--t) var(--ease); }
 
+.mega-wrap{ position: relative; }
+.mega-trigger{ position: relative; z-index: 3; }
 
-.mega-wrap {
-  position: relative;
+.mega-panel{
+  position:absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 96vw);
+  opacity: 0; pointer-events: none; translate: 0 -6px;
+  transition: opacity var(--t) var(--ease), translate var(--t) var(--ease), filter var(--t) var(--ease);
+  filter: drop-shadow(0 24px 60px rgba(16,24,40,.16));
+  z-index: 1300;
+}
+.mega-panel.open{ opacity:1; pointer-events:auto; translate:0 0; }
+
+.mega-inner{
+  border:1px solid var(--border); border-radius:20px; overflow:hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.98));
+  backdrop-filter: blur(10px);
+  padding: var(--s-6);
+  display:grid; gap: var(--s-6);
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
-.mega-panel {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100vw;
-  background: white;
-  padding: 20px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(15px);
-  transition: all 0.3s ease;
+@media (max-width: 1200px){ .mega-inner{ grid-template-columns: 1fr 1fr; } }
+@media (max-width: 992px){ .mega-panel{ display:none !important; } } /* drawer on mobile */
 
-  &.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-}
+/* Height token for the bar (matches your 82px) */
+:root{ --nb-h: 82px; }
+
+

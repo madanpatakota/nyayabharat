@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +10,20 @@ export class NavbarComponent {
   open = false;      // mobile drawer
   openMega = false;  // desktop "Explore" mega dropdown
 
+  isExplore = false;
   toggle() { this.open = !this.open; }
   close()  { this.open = false; }
 
-  toggleMega(state: boolean) {
-  this.openMega = state;
+
+  constructor(private router: Router) {
+  this.router.events.subscribe(() => {
+    this.isExplore = this.router.url.startsWith('/explore');
+  });
+}
+  
+toggleMega(open: boolean){
+  if (this.isExplore) { this.openMega = false; return; }
+  this.openMega = open;
 }
 
 }

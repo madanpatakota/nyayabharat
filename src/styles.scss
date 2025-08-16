@@ -2,6 +2,13 @@
 
 /* Brand palette */
 :root{
+  --brand-600: #144264;   /* primary */
+  --brand-800: #0d2a46;   /* secondary */
+  --brand: var(--brand-600);
+
+  /* page canvas */
+  --page-bg: #f4f8fc;     /* set one solid color for the whole app */
+  /* If you prefer pure white, change to: #ffffff */
   --brand:#144264; --brand-600:#103450; --brand-700:#0b283e;
   --accent:#EE6C4D; --accent-2:#6E9BF5;
 
@@ -28,6 +35,104 @@
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 }
+
+/* 2) Solid background everywhere (no gradients) */
+html, body, main {
+  background: var(--page-bg) !important;
+  color: var(--ink);
+}
+
+
+/* 3) Optional page-specific canvases (keep consistency) */
+/* Add the class to <body> from the route if you want a different solid for a page */
+body.page-cpc   { --page-bg: #f7fbff; }      /* soft paper for CPC */
+body.page-bns   { --page-bg: #f4f8fc; }      /* default */
+body.page-dark  { --page-bg: #0d2a46; color:#fff; }
+
+/* 4) Surface elements (cards, nav, drawers) stay clean on top */
+.card, .nb3-bar, .drawer, .mega-inner, .panel .card {
+  background: #fff;
+}
+
+/* 5) Remove any leftover page gradient utilities if present */
+.brand-wash, .brand-gradient {
+  background: transparent;  /* keep components’ own colors, no page haze */
+}
+
+
+.mega-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+
+  .section {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      letter-spacing: 0.5px;
+      color: #144164;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        padding: 0.75rem 1rem;
+        border-radius: 12px;
+        margin-bottom: 0.5rem;
+        background: #f8fafc;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: linear-gradient(135deg, #144164, #1f5a9a);
+          color: #fff;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 14px rgba(20,65,100,0.25);
+        }
+      }
+    }
+  }
+
+  /* 🎯 Highlight ONLY Legacy & Crosswalks */
+  .section.legacy {
+    background: linear-gradient(180deg, #fdfdfd, #f5f7fa);
+    border: 2px solid #144164;
+    box-shadow: 0 6px 16px rgba(20,65,100,0.15);
+
+    h4 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #144164;
+
+      &::after {
+        content: "★ Premium";
+        background: #144164;
+        color: #fff;
+        font-size: 0.7rem;
+        padding: 2px 6px;
+        border-radius: 8px;
+        text-transform: none;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+
 
 /* Dark theme hook (optional later) */
 .theme-dark{ --bg:#0a0f16; --surface:#0f1620; --ink:#eaf0f6; --muted:#9fb0c4; --border:#223046; }

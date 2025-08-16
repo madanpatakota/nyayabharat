@@ -26,8 +26,10 @@
 
         <!-- Mega panel (desktop only) -->
         <div class="mega-panel" [class.open]="openMega" role="menu" aria-label="Explore Laws">
+       
           <div class="mega-inner">
-           <section class="col">
+          <div class="section">
+            <section class="col">
   <h3>BHARATIYA CODES</h3>
 
   <a class="tile" routerLink="/bns/sections">
@@ -56,9 +58,10 @@
     </div>
     <span class="badge">170</span>
   </a>
-</section>
-
+           </section>
+</div>
 <!-- ========== Procedural Codes (new) ========== -->
+<div class="section">
 <section class="col">
   <h3>PROCEDURAL CODES</h3>
 
@@ -80,10 +83,12 @@
     <span class="badge">484</span>
   </a>
 </section>
+</div>
 
 
 
            <!-- ========== Legacy & Crosswalks (middle) ========== -->
+<div class="section legacy">
 <section class="col">
   <h3>LEGACY & CROSSWALKS</h3>
 
@@ -104,6 +109,7 @@
     </div>
   </a>
 </section>
+</div>
 
 
 <!-- ========== Smart Shortcuts (right) ========== -->
