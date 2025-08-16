@@ -138,6 +138,28 @@ body.page-dark  { --page-bg: #0d2a46; color:#fff; }
 .theme-dark{ --bg:#0a0f16; --surface:#0f1620; --ink:#eaf0f6; --muted:#9fb0c4; --border:#223046; }
 
 html, body { font-family: var(--font-body);height:100%; }
+/* 0) Remove browser’s default page gaps */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 1) Make sure the header sits flush and spans full width */
+.nb3 {
+  display: block;
+  position: sticky; /* keep if you want it to stick; remove if not */
+  top: 0;
+  width: 100%;
+  margin: 0;
+  z-index: 1200;
+}
+/* 2) Optional: slightly denser controls so the bar “feels” tighter */
+.primary a,
+.mega-trigger { padding: .38rem .56rem; }           /* was .44rem */
+.actions .icon  { width: 40px; height: 40px; }      /* was 42px */
+
+main, .page-first-block { margin-top: 0; }
+
 
 h1, h2, h3, .nb-title, .tabs button { font-family: var(--font-heading); }
 
