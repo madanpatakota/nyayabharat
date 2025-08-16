@@ -1,0 +1,32 @@
+.viewer{ padding-top: 0; }
+.hero{ position: relative; color:#fff; margin-top:0; }
+.hero .hero-inner{ padding: var(--s-12) var(--s-6) var(--s-6); }
+.hero .crumbs{ opacity:.85; font-weight:700; }
+.hero .crumbs a{ color:#fff; opacity:.9; }
+.hero .title{ font-weight:900; margin:.4rem 0; }
+.hero .subtitle{ opacity:.85; font-weight:700; }
+.hero .tools{ margin-top: var(--s-5); display:flex; gap:10px; flex-wrap:wrap; }
+.hero .tools .chip{ border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:.5rem .9rem; background: rgba(255,255,255,.12); color:#fff; font-weight:800; }
+.hero .hero-waves{ height: 32px; width:100%; background: radial-gradient(1200px 240px at 20% -60px, rgba(255,255,255,.28), transparent), radial-gradient(1200px 240px at 80% -60px, rgba(255,255,255,.18), transparent); }
+
+.content-wrap{ padding: var(--s-6); }
+.tabs{ position: sticky; top:82px; z-index:10; display:flex; flex-wrap:wrap; gap:8px; background:#fff; border:1px solid var(--border); border-radius:999px; padding:6px; box-shadow: var(--shadow-sm); }
+.tabs button{ border:0; background:transparent; padding:.72rem 1rem; border-radius:999px; font-weight:900; color:var(--muted); }
+.tabs button.active{ color:#fff; background: linear-gradient(90deg, var(--brand), var(--brand-700)); box-shadow: 0 10px 24px rgba(20,66,100,.18); }
+
+.panel .card{ border:1px solid var(--border); border-radius:20px; background:#fff; padding: var(--s-6); box-shadow: var(--shadow-sm); }
+.lead{ font-size: var(--font-l); color: var(--ink); }
+.bullets, .notes{ margin-top: var(--s-4); padding-left: 1.2rem; }
+.steps{ margin-top: var(--s-4); padding-left: 1.4rem; }
+.examples{ display:grid; gap:16px; }
+.ex{ border:1px solid var(--border); border-radius:16px; padding:14px; background:#fff; box-shadow: var(--shadow-xs); }
+.ex-title{ font-weight:900; display:flex; align-items:center; gap:8px; }
+.judgments{ display:grid; gap:12px; }
+.judg{ border:1px solid var(--border); border-radius:14px; padding:12px; background:#fff; }
+.judg .row1{ display:grid; grid-template-columns: 60px 1fr auto; gap:10px; align-items:center; }
+.court{ display:inline-flex; justify-content:center; align-items:center; width:56px; height:28px; border-radius:999px; font-weight:900; background:#eef3fa; }
+.court.sc{ background: color-mix(in oklab, var(--brand) 14%, #eef3fa); color: var(--brand-800); }
+.court.hc{ background:#f4efe9; color:#7a4b00; }
+.loading{ margin-top: 10px; color: var(--muted); }
+:root{ --shadow-xs: 0 4px 10px rgba(16,24,40,.06); }
+@media (max-width: 768px){ .tabs{ top:74px; } }

@@ -1,0 +1,47 @@
+[
+  {
+    "id": 9,
+    "number": "Sec 9",
+    "slug": "civil-courts-jurisdiction",
+    "title": "Courts to try all civil suits unless barred",
+    "chapter": "Jurisdiction of Courts",
+    "tags": ["jurisdiction", "civil suits"],
+    "badges": { "cognizable": false, "bailable": false, "compoundable": false }
+  },
+  {
+    "id": 711,
+    "number": "O7 R11",
+    "slug": "rejection-of-plaint",
+    "title": "Order VII Rule 11 — Rejection of plaint",
+    "chapter": "Pleadings",
+    "tags": ["plaint", "rejection"],
+    "badges": { "cognizable": false, "bailable": false, "compoundable": false }
+  },
+  {
+    "id": 39,
+    "number": "Sec 39",
+    "slug": "transfer-of-decree",
+    "title": "Transfer of decree",
+    "chapter": "Execution of Decrees",
+    "tags": ["execution", "transfer"],
+    "badges": { "cognizable": false, "bailable": false, "compoundable": false }
+  },
+  {
+    "id": 151,
+    "number": "Sec 151",
+    "slug": "inherent-powers",
+    "title": "Inherent powers of Court",
+    "chapter": "General",
+    "tags": ["inherent powers"],
+    "badges": { "cognizable": false, "bailable": false, "compoundable": false }
+  },
+  {
+    "id": 115,
+    "number": "Sec 115",
+    "slug": "revision",
+    "title": "Revision",
+    "chapter": "Revisions",
+    "tags": ["revision"],
+    "badges": { "cognizable": false, "bailable": false, "compoundable": false }
+  }
+]

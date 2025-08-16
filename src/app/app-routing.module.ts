@@ -14,7 +14,9 @@ const routes: Routes = [
       { path: 'assistance', loadChildren: () => import('./features/legal-assistance/legal-assistance.module').then(m => m.LegalAssistanceModule) },
       { path: 'articles', loadChildren: () => import('./features/articles-judgments/articles-judgments.module').then(m => m.ArticlesJudgmentsModule) },
       { path: 'saved', loadChildren: () => import('./features/saved/saved.module').then(m => m.SavedModule) },
-      { path: 'bns', loadChildren: () => import('./features/laws/bns/bns.module').then(m => m.BnsModule) }
+      { path: 'bns', loadChildren: () => import('./features/laws/bns/bns.module').then(m => m.BnsModule) },
+     { path: 'cpc', loadChildren: () => import('./features/laws/cpc/cpc.module').then(m => m.CpcModule) }
+
     ]
   },
   { path: '**', redirectTo: '' }              // fallback

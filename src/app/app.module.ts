@@ -12,8 +12,7 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    BnsIpcComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
