@@ -26,4 +26,11 @@ toggleMega(open: boolean){
   this.openMega = open;
 }
 
+openExplore = false;
+
+toggleExplore() {
+  this.openExplore = !this.openExplore;
+}
+
+
 }

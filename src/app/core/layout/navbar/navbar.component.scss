@@ -219,3 +219,36 @@
   height: 72px;
   transition: height var(--t) var(--ease);
 }
+
+.nav-parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.72rem;
+  font-weight: 800;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 12px;
+
+  &:hover {
+    background: var(--bg);
+  }
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1rem;
+  gap: 6px;
+
+  a {
+    font-weight: 600;
+    padding: 0.6rem 0.5rem;
+    border-radius: 10px;
+
+    &:hover {
+      background: var(--bg);
+    }
+  }
+}
+

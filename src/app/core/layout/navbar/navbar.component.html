@@ -169,13 +169,29 @@
 
 
     <a routerLink="/" (click)="close()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-    <a routerLink="/explore" (click)="close()" routerLinkActive="active">Explore</a>
+    <!-- <a routerLink="/explore" (click)="close()" routerLinkActive="active">Explore</a> -->
 
     <!-- ✅ Direct law links for mobile -->
-    <a routerLink="/cpc/sections" (click)="close()" routerLinkActive="active">⚖️ CPC 1908</a>
+    <!-- <a routerLink="/cpc/sections" (click)="close()" routerLinkActive="active">⚖️ CPC 1908</a>
     <a routerLink="/crpc/sections" (click)="close()" routerLinkActive="active">📜 CrPC 1973</a>
     <a routerLink="/ipc/sections" (click)="close()" routerLinkActive="active">📘 IPC (Legacy)</a>
     <a routerLink="/bns/sections" (click)="close()" routerLinkActive="active">📕 BNS 2023</a>
+ -->
+<!-- Explore (collapsible in mobile) -->
+<div class="nav-parent" (click)="toggleExplore()">
+  <span>Explore</span>
+  <i class="fa-solid" [ngClass]="openExplore ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+</div>
+
+<div class="submenu" *ngIf="openExplore">
+  <a routerLink="/cpc/sections" (click)="close()" routerLinkActive="active">⚖️ CPC 1908</a>
+  <a routerLink="/crpc/sections" (click)="close()" routerLinkActive="active">📜 CrPC 1973</a>
+  <a routerLink="/ipc/sections" (click)="close()" routerLinkActive="active">📘 IPC (Legacy)</a>
+  <a routerLink="/bns/sections" (click)="close()" routerLinkActive="active">📕 BNS 2023</a>
+</div>
+
+
+
 
     <a routerLink="/smart" (click)="close()" routerLinkActive="active">Smart</a>
     <a routerLink="/learn" (click)="close()" routerLinkActive="active">Learn</a>
