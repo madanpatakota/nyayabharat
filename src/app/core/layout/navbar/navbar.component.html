@@ -21,6 +21,9 @@
      Explore
   </a>
 
+  
+
+
         <!-- Mega panel (desktop only) -->
         <div class="mega-panel" [class.open]="openMega" role="menu" aria-label="Explore Laws">
           <div class="mega-inner">
@@ -54,6 +57,31 @@
     <span class="badge">170</span>
   </a>
 </section>
+
+<!-- ========== Procedural Codes (new) ========== -->
+<section class="col">
+  <h3>PROCEDURAL CODES</h3>
+
+  <a class="tile" routerLink="/cpc/sections">
+    <span class="ico"><i class="fa-solid fa-scale-unbalanced"></i></span>
+    <div class="meta">
+      <strong>CPC 1908</strong>
+      <small>Code of Civil Procedure</small>
+    </div>
+    <span class="badge">158 ch.</span>
+  </a>
+
+  <a class="tile" routerLink="/crpc/sections">
+    <span class="ico"><i class="fa-solid fa-user-shield"></i></span>
+    <div class="meta">
+      <strong>CrPC 1973</strong>
+      <small>Code of Criminal Procedure</small>
+    </div>
+    <span class="badge">484</span>
+  </a>
+</section>
+
+
 
            <!-- ========== Legacy & Crosswalks (middle) ========== -->
 <section class="col">
@@ -123,23 +151,35 @@
   </div>
 
   <!-- Mobile Drawer -->
-  <div class="drawer-back d-lg-none" [class.open]="open" (click)="close()">
-    <nav class="drawer card" (click)="$event.stopPropagation()">
-      <div class="head">
-        <span class="logo sm"><i class="fa-solid fa-scale-balanced"></i></span>
-        <strong>Nyayabharat</strong>
-      </div>
+ <!-- Mobile Drawer -->
+<!-- Mobile Drawer -->
+<div class="drawer-back d-lg-none" [class.open]="open" (click)="close()">
+  <nav class="drawer card" (click)="$event.stopPropagation()">
+    <div class="head">
+      <span class="logo sm"><i class="fa-solid fa-scale-balanced"></i></span>
+      <strong>Nyayabharat</strong>
+    </div>
 
-      <a routerLink="/" (click)="close()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-      <a routerLink="/explore" (click)="close()" routerLinkActive="active">Explore</a>
-      <a routerLink="/smart" (click)="close()" routerLinkActive="active">Smart</a>
-      <a routerLink="/learn" (click)="close()" routerLinkActive="active">Learn</a>
-      <a routerLink="/assistance" (click)="close()" routerLinkActive="active">Assistance</a>
-      <a routerLink="/articles" (click)="close()" routerLinkActive="active">Articles</a>
-      <a routerLink="/saved" (click)="close()" routerLinkActive="active">Saved</a>
-      <a routerLink="/auth" class="cta block" (click)="close()">
-        <i class="fa-solid fa-user"></i><span>Login</span>
-      </a>
-    </nav>
-  </div>
+    <a routerLink="/" (click)="close()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/explore" (click)="close()" routerLinkActive="active">Explore</a>
+
+    <!-- ✅ Direct law links for mobile -->
+    <a routerLink="/cpc/sections" (click)="close()" routerLinkActive="active">⚖️ CPC 1908</a>
+    <a routerLink="/crpc/sections" (click)="close()" routerLinkActive="active">📜 CrPC 1973</a>
+    <a routerLink="/ipc/sections" (click)="close()" routerLinkActive="active">📘 IPC (Legacy)</a>
+    <a routerLink="/bns/sections" (click)="close()" routerLinkActive="active">📕 BNS 2023</a>
+
+    <a routerLink="/smart" (click)="close()" routerLinkActive="active">Smart</a>
+    <a routerLink="/learn" (click)="close()" routerLinkActive="active">Learn</a>
+    <a routerLink="/assistance" (click)="close()" routerLinkActive="active">Assistance</a>
+    <a routerLink="/articles" (click)="close()" routerLinkActive="active">Articles</a>
+    <a routerLink="/saved" (click)="close()" routerLinkActive="active">Saved</a>
+
+    <a routerLink="/auth" class="cta block" (click)="close()">
+      <i class="fa-solid fa-user"></i><span>Login</span>
+    </a>
+  </nav>
+</div>
+
+
 </header>

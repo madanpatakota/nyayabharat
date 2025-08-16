@@ -13,9 +13,18 @@
           (focus)="bindSearchRef(qref)"
         />
       </label>
-      <div class="chips">
-        <button *ngFor="let c of chips" class="chip" type="button" (click)="onChipClick(c)">{{ c }}</button>
-      </div>
+<!-- Filter chips: mobile-friendly scroller -->
+<div class="chip-scroller" role="tablist" aria-label="Quick filters">
+  <button
+    *ngFor="let c of chips"
+    class="chip"
+    type="button"
+    (click)="onChipClick(c)"
+  >
+    {{ c }}
+  </button>
+</div>
+
     </div>
   </header>
 

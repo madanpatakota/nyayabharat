@@ -1,55 +1,222 @@
-.cpc-sections{
-  padding: 18px var(--s-6) var(--s-10);
-  background:
-    radial-gradient(1200px 800px at 10% -200px, rgba(20,66,100,.10), transparent),
-    radial-gradient(900px 600px at 90% -150px, rgba(110,155,245,.08), transparent),
-    var(--bg);
+/* ===============================
+   CPC Sections — Responsive SCSS
+   =============================== */
+
+/* ---- Page area ---- */
+.cpc-sections{ /* add this class to your outer <section> if not present */
+  padding: clamp(14px, 2.2vw, 24px);
 }
+
 .page-head{
-  display:grid; gap: var(--s-4); grid-template-columns: 1fr; margin: 0 auto var(--s-4);
-h1 {
+  max-width: var(--container-max, 1200px);
+  margin: 0 auto clamp(14px, 2.2vw, 22px);
+}
+.page-head h1{
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 1.3rem + 2vw, 2.4rem);
   font-weight: 900;
-  margin: 0;
+  line-height: 1.08;
+  letter-spacing: .2px;
+  font-size: clamp(22px, 2.2vw + 10px, 34px);
+  margin: 0 0 .35rem;
 }
 
-  .tools{ display:grid; gap: var(--s-4); grid-template-columns: 1fr auto; align-items:center; }
-  @media (max-width: 900px){ .tools{ grid-template-columns: 1fr; } }
+/* ---- Toolbar ---- */
+.tools{
+  display: grid; gap: 12px;
+  grid-template-columns: 1fr auto;
+  align-items: center;
 }
+@media (max-width: 820px){ .tools{ grid-template-columns: 1fr; } }
+
+/* Search box */
 .search{
-  display:flex; align-items:center; gap:10px; border:1px solid var(--border); border-radius:16px; background:#fff;
-  padding:.65rem .9rem; box-shadow: var(--shadow-sm);
-  i{ color: var(--muted); }
-  input{ border:0; outline:0; width:100%; background:transparent; font-weight:600; }
-  &:focus-within{ border-color: color-mix(in oklab, var(--brand) 28%, var(--border)); box-shadow: 0 10px 24px rgba(20,66,100,.10); }
+  display:flex; align-items:center; gap:10px;
+  border:1px solid var(--border); background:#fff; border-radius:16px;
+  padding:.6rem .85rem; box-shadow: var(--shadow-xs);
 }
+.search i{ color: var(--muted); }
+.search input{
+  width:100%; border:0; outline:0; background:transparent;
+  font-weight:700; color: var(--ink);
+  font-size: clamp(14px, .6vw + 12px, 16px);
+}
+
+/* Chips row – scrollable on mobile */
 .chips{ display:flex; gap:10px; flex-wrap:wrap; }
+@media (max-width: 820px){
+  .chips{ flex-wrap:nowrap; overflow:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+  .chips::-webkit-scrollbar{ display:none; }
+}
 .chip{
-  border:1px solid var(--border); background:#fff; border-radius:999px; padding:.48rem .86rem; font-weight:800; color:var(--muted);
-  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t) var(--ease);
+  border:1px solid var(--border); background:#fff; border-radius:999px;
+  padding:.46rem .8rem; font-weight:800; color: var(--muted);
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  white-space: nowrap;
 }
-.chip:hover{ transform: translateY(-1px); box-shadow: var(--shadow-sm); border-color: color-mix(in oklab, var(--brand) 18%, var(--border)); }
+.chip:hover{ transform: translateY(-1px); box-shadow: var(--shadow-sm); border-color: color-mix(in oklab, var(--brand) 14%, var(--border)); }
 
-.grid{ display:grid; gap: var(--s-4); grid-template-columns: repeat(3,minmax(0,1fr)); }
-@media (max-width: 1200px){ .grid{ grid-template-columns: repeat(2,minmax(0,1fr)); } }
-@media (max-width: 768px){ .grid{ grid-template-columns: 1fr; } }
+/* ---- Grid ---- */
+.grid{
+  max-width: var(--container-max, 1200px);
+  margin: clamp(10px, 1.4vw, 16px) auto 0;
+  display:grid; gap: clamp(12px, 1.6vw, 20px);
+  grid-template-columns: repeat(3, minmax(0,1fr));
+}
+@media (max-width: 1200px){ .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 720px){  .grid{ grid-template-columns: 1fr; } }
 
+/* ---- Cards ---- */
 .card{
-  position:relative; border:1px solid var(--border); border-radius:22px; background:#fff; padding: var(--s-5); box-shadow: var(--shadow-sm);
-  transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease), border-color var(--t) var(--ease), filter var(--t) var(--ease);
+  position: relative;
+  border:1px solid var(--border);
+  background:#fff; border-radius: 22px;
+  padding: clamp(14px, 1.8vw, 22px);
+  box-shadow: var(--shadow-sm);
+  display:grid; grid-template-columns: 1fr auto; gap: 12px;
+  transition: transform .18s ease, box-shadow .22s ease, border-color .18s ease;
+  text-decoration: none; color: inherit;
 }
-a.card{ color: inherit; text-decoration: none; }
-.card:hover, .card:focus-visible{
-  transform: translateY(-3px); box-shadow: 0 18px 36px rgba(20,66,100,.12); border-color: color-mix(in oklab, var(--brand) 22%, var(--border)); outline: none;
+.card:focus-visible{ outline: 3px solid color-mix(in oklab, var(--brand) 40%, #fff); outline-offset: 2px; }
+.card:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in oklab, var(--brand) 16%, var(--border));
+  box-shadow: 0 10px 26px rgba(16,44,72,.10);
 }
-.law-card{ display:grid; grid-template-columns: 1fr auto; gap: var(--s-4); align-items:center; min-height:150px; cursor:pointer; }
-.law-card .stripe{ position:absolute; left:0; top:0; bottom:0; width:6px; border-radius:22px 0 0 22px; background: linear-gradient(180deg, var(--brand), var(--brand-700)); pointer-events:none; }
-.meta{ min-width:0; }
-.meta .badge-num{ display:inline-flex; align-items:center; gap:8px; padding:.28rem .6rem; border-radius:999px; background: color-mix(in oklab, var(--brand) 10%, #fff); color: var(--brand-700); font-weight:900; font-size:.86rem; }
-.meta .title{ font-family: var(--font-heading); font-weight:900; font-size: clamp(1.2rem,1.05rem + .6vw,1.6rem); margin:8px 0 2px; color: var(--ink); }
-.meta .chapter{ color: var(--muted); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.props{ display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
-.prop{ display:inline-block; padding:.35rem .64rem; border-radius:999px; background:#f3f6fb; color:#9aa8bb; font-weight:800; border:1px solid #edf2f7; }
-.skel{ height:150px; background: linear-gradient(90deg, #f0f4f9 25%, #ffffff 37%, #f0f4f9 63%); background-size: 400% 100%; animation: sk 1.2s ease infinite; }
-@keyframes sk{ 0%{ background-position:0 0;} 100%{ background-position:-135% 0;} }
+
+/* Accent stripe */
+.card .stripe{
+  position:absolute; left:0; top:10px; bottom:10px; width:6px; border-radius:6px;
+  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-700) 100%);
+  box-shadow: 0 6px 16px rgba(16,44,72,.18);
+}
+
+/* Left meta */
+.meta{ padding-left: 10px; min-width: 0; } /* allow ellipsis */
+.badge-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:30px; padding:0 10px; border-radius:999px;
+  background:#eef3fa; color:#3a5771; font-weight:900; font-size:.9rem;
+}
+.title{
+  margin: 8px 0 2px;
+  font-weight:900; color: var(--ink);
+  font-size: clamp(16px, 1.1vw + 14px, 22px);
+  line-height: 1.15;
+  white-space: normal; word-break: break-word; overflow-wrap: anywhere;
+}
+.chapter{
+  color: var(--muted); font-weight:600;
+  font-size: clamp(13px, .6vw + 11px, 15px);
+}
+
+/* Right properties */
+.props{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-self: end; }
+@media (max-width: 720px){ .props{ justify-self: start; } }
+
+.prop{
+  display:inline-flex; align-items:center; height:28px;
+  padding: 0 .7rem; border-radius:999px; font-weight:800;
+  background:#f3f6fb; color:#9aa8bb; border: 1px solid #e6edf6;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.prop.ok{
+  background: color-mix(in oklab, var(--brand) 12%, #fff);
+  color: var(--brand-700); border-color: color-mix(in oklab, var(--brand) 20%, #e6edf6);
+}
+
+/* Prevent any accidental vertical writing modes from browser zoom quirks */
+.card, .title, .chapter, .badge-num, .prop{ writing-mode: horizontal-tb; text-orientation: mixed; }
+
+/* ---- Skeletons (loading) ---- */
+.skel{
+  height: 140px; border-radius: 22px;
+  background: linear-gradient(90deg, #f0f4f9 25%, #ffffff 37%, #f0f4f9 63%);
+  background-size: 400% 100%;
+  animation: sk 1.2s ease infinite;
+  border:1px solid #e8eef6;
+}
+@keyframes sk { 0%{background-position: 0 0;} 100%{background-position: -135% 0;} }
+
+/* ---- Motion respect ---- */
+@media (prefers-reduced-motion: reduce){
+  .card, .chip{ transition: none !important; }
+  .skel{ animation: none; }
+}
+/* --- FIX: mobile card layout & vertical text --- */
+.law-card{ 
+  /* two columns: a tiny auto area for the left block (num/stripe), then flexible content */
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  column-gap: clamp(10px, 2vw, 14px);
+
+  /* make sure absolutely-positioned stripe doesn't steal layout width */
+  position: relative;
+  padding-left: clamp(10px, 1.6vw, 12px);
+}
+
+.law-card .stripe{
+  position: absolute; left: 6px; top: 10px; bottom: 10px; width: 4px;
+  border-radius: 4px;
+}
+
+/* left column (section number) */
+.law-card .badge-num{
+  grid-column: 1 / 2;
+  align-self: start;
+}
+
+/* right column (meta + props) */
+.law-card .meta{
+  grid-column: 2 / 3;
+  min-width: 0;                 /* CRUCIAL: allow text to actually shrink instead of wrapping per-character */
+  writing-mode: horizontal-tb;  /* hard stop any vertical writing mode fallbacks */
+  text-orientation: mixed;
+}
+
+/* title: readable, clamped */
+.law-card .title{
+  margin: 6px 0 2px;
+  font-weight: 900;
+  line-height: 1.18;
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;  /* show up to 2 lines on narrow phones */
+          line-clamp: 2;
+  word-break: normal;
+  overflow-wrap: anywhere; /* break long words only when needed */
+}
+
+/* chapter line stays on one or two lines max */
+.law-card .chapter{
+  color: var(--muted);
+  font-weight: 600;
+  max-width: 36ch;
+  white-space: normal;
+}
+
+/* badges row sits under title, wraps cleanly */
+.law-card .props{
+  grid-column: 2 / 3;
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 4px;
+  justify-content: flex-start;
+}
+
+/* prop visuals: smaller on mobile */
+@media (max-width: 420px){
+  .law-card .prop{ height: 26px; padding: 0 .6rem; font-size: .85rem; }
+}
+
+/* grid: guarantee single column on phones */
+@media (max-width: 720px){
+  .grid{ grid-template-columns: 1fr !important; }
+}
+
+/* safety: never allow per-char vertical stacking */
+.law-card, .law-card *{
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+}
