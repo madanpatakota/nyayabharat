@@ -41,12 +41,20 @@ export class CpcSectionsComponent implements OnInit, OnDestroy {
     this.router.navigate([], { queryParams: this.q ? { q: this.q } : {}, replaceUrl: true });
   }
 
-  onChipClick(label: string){
-    const tag = label.toLowerCase();
-    if (!this.q.toLowerCase().includes(tag)) this.q = (this.q ? this.q + ' ' : '') + tag;
-    this.applyFilters();
-    this.router.navigate([], { queryParams: this.q ? { q: this.q } : {}, replaceUrl: true });
-  }
+  activeChips = new Set<string>(); // optional if you want multi-select visual
+
+isChipActive(c: string){ return this.activeChips.has(c.toLowerCase()); }
+
+onChipClick(label: string){
+  const tag = label.toLowerCase();
+  // toggle visual selection
+  if (this.activeChips.has(tag)) this.activeChips.delete(tag); else this.activeChips.add(tag);
+
+  // your existing search logic (kept same behavior)
+  if (!this.q.toLowerCase().includes(tag)) this.q = (this.q ? this.q + ' ' : '') + tag;
+  this.applyFilters();
+  this.router.navigate([], { queryParams: this.q ? { q: this.q } : {}, replaceUrl: true });
+}
 
   applyFilters(){
     const s = this.q.trim().toLowerCase();
@@ -63,5 +71,6 @@ export class CpcSectionsComponent implements OnInit, OnDestroy {
   }
   bindSearchRef(el: HTMLInputElement){ this.searchInput = el; }
 
+  
   ngOnDestroy(): void { this.destroy$.next(); this.destroy$.complete(); }
 }

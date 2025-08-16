@@ -220,3 +220,46 @@
   writing-mode: horizontal-tb !important;
   text-orientation: mixed !important;
 }
+
+
+/* -------- Segmented Filter Rail -------- */
+.filter-rail{
+  display:flex; gap:6px; padding:6px; margin:10px 0 14px;
+  border:1px solid var(--border);
+  border-radius:999px; background:rgba(255,255,255,.72);
+  backdrop-filter: blur(10px); box-shadow: var(--shadow-sm);
+
+  overflow-x:auto; overscroll-behavior-x: contain; -webkit-overflow-scrolling:touch;
+  scrollbar-width:none; &::-webkit-scrollbar{ display:none; }
+
+  /* edge fade hint */
+  mask-image: linear-gradient(to right, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 18px, #000 calc(100% - 18px), transparent 100%);
+}
+
+.filter-rail .seg{
+  flex:0 0 auto;
+  display:inline-flex; align-items:center; gap:8px;
+  border:0; background:transparent;
+  padding:.52rem .9rem; border-radius:999px;
+  font-weight:800; color:var(--muted); white-space:nowrap;
+  transition: transform .15s ease, color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.filter-rail .seg .dot{
+  width:8px; height:8px; border-radius:50%;
+  background: color-mix(in oklab, var(--brand) 40%, #9fb3c7);
+  opacity:.6; transform: translateY(1px);
+}
+.filter-rail .seg:hover{ transform: translateY(-1px); color: var(--ink); }
+.filter-rail .seg:active{ transform: translateY(0); }
+
+.filter-rail .seg.active{
+  color:#fff; background: linear-gradient(90deg, var(--brand), var(--brand-700));
+  box-shadow: 0 10px 22px rgba(20,66,100,.18);
+}
+.filter-rail .seg.active .dot{ background:#fff; opacity:.95; }
+
+/* tokens if needed */
+:root{
+  --shadow-sm: 0 8px 20px rgba(16,24,40,.08);
+}

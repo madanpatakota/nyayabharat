@@ -14,16 +14,20 @@
         />
       </label>
 <!-- Filter chips: mobile-friendly scroller -->
-<div class="chip-scroller" role="tablist" aria-label="Quick filters">
+<!-- Segmented filter rail -->
+<div class="filter-rail">
   <button
     *ngFor="let c of chips"
-    class="chip"
-    type="button"
+    class="seg"
+    [class.active]="isChipActive(c)"
     (click)="onChipClick(c)"
+    type="button"
   >
-    {{ c }}
+    <span class="lbl">{{ c }}</span>
   </button>
 </div>
+
+
 
     </div>
   </header>
