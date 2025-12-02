@@ -252,3 +252,25 @@
   }
 }
 
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+
+  .logo img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.5));
+  }
+
+  .title {
+    font-weight: 900;
+    font-size: 1.45rem;
+    color: #144164;
+    letter-spacing: .5px;
+  }
+}
