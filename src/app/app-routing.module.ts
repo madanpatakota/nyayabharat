@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: 'saved', loadChildren: () => import('./features/saved/saved.module').then(m => m.SavedModule) },
       { path: 'bns', loadChildren: () => import('./features/laws/bns/bns.module').then(m => m.BnsModule) },
      { path: 'cpc', loadChildren: () => import('./features/laws/cpc/cpc.module').then(m => m.CpcModule) }
+     
 
     ]
   },
