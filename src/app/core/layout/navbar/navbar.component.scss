@@ -50,7 +50,7 @@
   a{
     text-decoration:none; color:var(--muted);
     font-weight:800; font-size:.98rem;
-    padding:.44rem .56rem; border-radius:999px;
+    padding:0.50rem 1.50rem; border-radius:999px;
     transition: color var(--t) var(--ease), background var(--t) var(--ease),
                 transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
   }
@@ -92,7 +92,7 @@
 
 /* The trigger container should not create a positioning context */
 .mega-wrap{ position: static; }
-.mega-trigger{ display:inline-flex; align-items:center; padding:.44rem .56rem; border-radius:999px; }
+.mega-trigger{ display:inline-flex; align-items:center; padding:0.50rem 1.50rem; border-radius:999px; }
 
 /* Viewport-anchored panel */
 .mega-panel{
