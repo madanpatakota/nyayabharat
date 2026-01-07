@@ -280,3 +280,26 @@
     background: #ffffff;
   }
 }
+
+
+/* ================= HERO IMAGE RULE ================= */
+
+/* Mobile – IMAGE COMPLETELY REMOVED */
+@media (max-width: 768px) {
+  .hero-right {
+    display: none !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 64px 0 56px;
+  }
+
+  .hero-left {
+    text-align: left;
+  }
+}

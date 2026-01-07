@@ -1,138 +1,27 @@
-/* ROOT */
+/* =========================================
+   NYAYABHARAT NAVBAR – MOBILE FIRST
+   Works on ALL devices
+   ========================================= */
+
 .misard-navbar {
-  background: #ffffff;
-  border-bottom: 1px solid #e6ebf1;
   position: sticky;
   top: 0;
-  z-index: 1200;
+  z-index: 1000;
+  width: 100%;
+  background: #0e2b47;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 .nav-container {
-  width: 100%;
-  // max-width: 1320px;
-  // margin: auto;
-  padding: 14px 20px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 12px 16px;
+  gap: 12px;
 }
 
-/* BRAND */
-.nav-brand {
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: #144164;
-}
-
-.brand-tagline {
-  font-size: 11px;
-  color: #6c8aa4;
-}
-
-/* LINKS */
-.nav-links {
-  display: flex;
-  gap: 28px;
-}
-
-.nav-links a {
-  position: relative;
-  font-size: 14px;
-  font-weight: 600;
-  color: #144164;
-  text-decoration: none;
-  padding: 6px 2px;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-/* HOVER UNDERLINE (PURPLE) */
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: #144164; /* PURPLE */
-  transition: width 0.25s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* ACTIVE LINK */
-.nav-links a.active {
-  color: #144164;
-}
-
-.nav-links a.active::after {
-  width: 100%;
-}
-
-/* TOGGLE */
-.nav-toggle {
-  display: none;
-  font-size: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #144164;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #ffffff;
-    border-top: 1px solid #e6ebf1;
-
-    flex-direction: column;
-    gap: 0;
-
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-  }
-
-  .nav-links.open {
-    max-height: 320px;
-  }
-
-  .nav-links a {
-    padding: 16px 20px;
-    border-left: 4px solid transparent;
-  }
-
-  .nav-links a:hover {
-    background: #f7f5ff;
-    border-left-color: #144164; /* PURPLE EDGE */
-  }
-
-  .nav-links a.active {
-    background: #f1ecff;
-    border-left-color: #144164;
-  }
-}
-
-
-
+/* ================= BRAND ================= */
 .nav-brand {
   cursor: pointer;
 }
@@ -140,108 +29,145 @@
 .brand-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .law-icon {
-  width: 34px;
-  height: 34px;
-  color: #144164;
+  width: 36px;
+  height: 36px;
+  color: #ffffff;
+  flex-shrink: 0;
 }
 
 .brand-text {
   display: flex;
   flex-direction: column;
+  line-height: 1.1;
 }
 
 .brand-name {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  color: #144164;
-  letter-spacing: 0.3px;
+  color: #ffffff;
 }
 
 .brand-tagline {
   font-size: 11px;
-  color: #6c8aa4;
+  color: rgba(255,255,255,0.75);
 }
 
-.auth-actions {
-  margin-left: 16px;
+/* ================= TOGGLE ================= */
+.nav-toggle {
+  font-size: 22px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* ================= LINKS (MOBILE) ================= */
+.nav-links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #0e2b47;
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-links.open {
   display: flex;
-  align-items: center;
 }
 
-.login-btn {
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 14px;
-  border-radius: 10px;
-  border: 1px solid #144164;
-  color: #144164;
+.nav-links a {
+  padding: 14px 20px;
+  color: #ffffff;
   text-decoration: none;
-  transition: all 0.25s ease;
-
-  &:hover {
-    background: #144164;
-    color: #ffffff;
-  }
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+.nav-links a.active {
+  background: rgba(255,255,255,0.08);
+  font-weight: 600;
+}
+
+/* ================= AUTH ================= */
+.auth-actions {
+  display: none;
+}
+
+/* ================= DESKTOP ================= */
+@media (min-width: 992px) {
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-container {
+    padding: 14px 32px;
+  }
+
+  .nav-links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    background: transparent;
+    border: none;
+    gap: 26px;
+  }
+
+  .nav-links a {
+    padding: 0;
+    border: none;
+    font-size: 15px;
+  }
+
   .auth-actions {
-    width: 100%;
-    padding: 12px 20px;
-    border-top: 1px solid #e6ebf1;
+    display: flex;
+    align-items: center;
+    gap: 18px;
   }
 
   .login-btn {
-    width: 100%;
-    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
   }
-}
 
-
-.user-menu {
-  position: relative;
-}
-
-.user-trigger {
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: #144164;
-  padding: 8px 12px;
-  border-radius: 10px;
-  transition: background 0.2s ease;
-
-  &:hover {
-    background: #f1f5fa;
+  .user-menu {
+    position: relative;
   }
-}
 
-.user-dropdown {
-  position: absolute;
-  right: 0;
-  top: 110%;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.18);
-  min-width: 160px;
-  overflow: hidden;
-  z-index: 2000;
+  .user-trigger {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 600;
+  }
 
-  a {
+  .user-dropdown {
+    position: absolute;
+    top: 130%;
+    right: 0;
+    background: #ffffff;
+    border-radius: 8px;
+    min-width: 180px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+    overflow: hidden;
+  }
+
+  .user-dropdown a {
     display: block;
-    padding: 12px 16px;
-    font-size: 13px;
+    padding: 12px 14px;
     color: #144164;
     text-decoration: none;
-    cursor: pointer;
+    font-size: 14px;
+  }
 
-    &:hover {
-      background: #f5f8fc;
-    }
+  .user-dropdown a:hover {
+    background: #f3f6fb;
   }
 }
