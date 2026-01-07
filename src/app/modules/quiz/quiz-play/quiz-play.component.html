@@ -1,0 +1,78 @@
+<app-back-nav label="Back"></app-back-nav>
+
+<section class="quiz-play-root" *ngIf="questions.length > 0 && currentQuestion">
+
+
+   <!-- ACT BADGE -->
+  <div class="act-badge" *ngIf="actShortName">
+    <span class="badge">{{ actShortName }}</span>
+    <span class="badge-name">{{ actName }}</span>
+  </div>
+
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <span class="progress">
+      Question {{ currentIndex + 1 }} of {{ questions.length }}
+    </span>
+  </div>
+
+  <!-- QUESTION -->
+  <div class="question-card">
+
+    <h2 class="question-text">
+      {{ currentQuestion.questionText }}
+    </h2>
+
+    <div class="options">
+      <div
+        class="option"
+        *ngFor="let opt of currentQuestion.options"
+        [class.selected]="selectedOptionId === opt.optionId"
+        (click)="selectOption(opt.optionId)"
+      >
+        {{ opt.optionText }}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ACTION -->
+  <div class="action-bar">
+    <button
+      class="next-btn"
+      [disabled]="selectedOptionId === null"
+      (click)="nextQuestion()"
+    >
+      {{ currentIndex + 1 === questions.length ? 'Finish' : 'Next' }}
+    </button>
+  </div>
+
+</section>
+
+
+<!-- EMPTY STATE -->
+<section class="quiz-empty-root" *ngIf="questions.length === 0">
+  <div class="empty-card">
+    <div class="empty-icon">⚖️</div>
+
+    <h2 class="empty-title">
+      No Quiz Available
+    </h2>
+
+    <p class="empty-subtitle">
+      We are carefully preparing high-quality legal questions for this section.
+      Please check back soon or try another difficulty level.
+    </p>
+
+    <div class="empty-actions">
+      <button class="primary-btn" routerLink="/explore">
+        Explore Other Laws
+      </button>
+
+      <button class="secondary-btn" (click)="router.navigate(['/'])">
+        Go Home
+      </button>
+    </div>
+  </div>
+</section>

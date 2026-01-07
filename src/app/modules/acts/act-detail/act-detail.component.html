@@ -1,0 +1,82 @@
+<!-- <div class="chapter-search">
+  <input
+    #chapterSearch
+    type="text"
+    placeholder="Search chapter (e.g. Punishments, Abetment...)"
+    (input)="onChapterSearch(chapterSearch.value)"
+  />
+</div> -->
+
+
+<section class="act-detail-page" *ngIf="act">
+
+  <!-- HEADER -->
+  <header class="act-header">
+    <h1 class="act-name">
+      {{ act.actName }}
+    </h1>
+
+    <div class="act-meta">
+      <span class="meta-item">
+        <strong>Year:</strong> {{ act.enactedYear }}
+      </span>
+
+      <span class="meta-item">
+        <strong>Authority:</strong> {{ act.authority }}
+      </span>
+
+      <span class="meta-item status">
+        {{ act.status }}
+      </span>
+    </div>
+  </header>
+
+  <!-- BACK -->
+  <app-back-nav label="Back to Acts"></app-back-nav>
+
+  <!-- DIVIDER -->
+  <div class="divider"></div>
+
+
+  <!-- CHAPTER SEARCH (✔ CORRECT PLACE) -->
+  <div class="chapter-search">
+    <input
+      #chapterSearch
+      type="text"
+      placeholder="Search chapter (e.g. Punishments, Abetment...)"
+      (input)="onChapterSearch(chapterSearch.value)"
+    />
+  </div>
+
+
+  <!-- CHAPTERS -->
+  <section class="chapters-section">
+    <h2 class="section-title">Chapters</h2>
+
+    <div class="chapters-list">
+      <div
+        class="chapter-card"
+        *ngFor="let chapter of act.chapters; trackBy: trackByChapter"
+      >
+        <div class="chapter-info">
+          <span class="chapter-number">
+            Chapter {{ chapter.chapterNumber }}
+          </span>
+
+          <h3 class="chapter-title">
+            {{ chapter.chapterTitle }}
+          </h3>
+        </div>
+
+        <a
+          class="view-sections"
+          [routerLink]="['/sections']"
+          [queryParams]="{ chapterId: chapter.chapterId }"
+        >
+          View Sections →
+        </a>
+      </div>
+    </div>
+  </section>
+
+</section>

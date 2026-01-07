@@ -1,0 +1,95 @@
+<section class="situations-root">
+
+  <!-- HEADER -->
+  <header class="situations-header">
+    <h1>Real-Life Legal Situations</h1>
+    <p>
+      Select a situation that matches your problem.
+      We explain the law calmly and clearly.
+    </p>
+  </header>
+
+  <!-- SEARCH -->
+  <div class="search-box">
+   <input
+  type="text"
+  placeholder="Search your situation in simple words…"
+  #searchInput
+  (input)="onSearchChange(searchInput.value)"
+/>
+
+
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button
+  class="filter"
+  [class.active]="selectedCategory === 'All'"
+  (click)="selectCategory('All')"
+>All</button>
+
+<button
+  class="filter"
+  [class.active]="selectedCategory === 'Police'"
+  (click)="selectCategory('Police')"
+>Police</button>
+
+<button
+  class="filter"
+  [class.active]="selectedCategory === 'Family'"
+  (click)="selectCategory('Family')"
+>Family</button>
+
+<button
+  class="filter"
+  [class.active]="selectedCategory === 'Property'"
+  (click)="selectCategory('Property')"
+>Property</button>
+
+<button
+  class="filter"
+  [class.active]="selectedCategory === 'Workplace'"
+  (click)="selectCategory('Workplace')"
+>Workplace</button>
+
+<button
+  class="filter"
+  [class.active]="selectedCategory === 'Online'"
+  (click)="selectCategory('Online')"
+>Online</button>
+
+  </div>
+
+  <!-- POPULAR -->
+  <section class="popular">
+    <h3>Most Common Situations</h3>
+    <div class="popular-list">
+      <span>Police night checking</span>
+      <span>Neighbour threats</span>
+      <span>Online abuse</span>
+      <span>Landlord harassment</span>
+    </div>
+  </section>
+
+  <!-- LIST -->
+  <div class="situations-list">
+<div
+  class="situation-card"
+  *ngFor="let s of filteredSituations; trackBy: trackById"
+  [routerLink]="['/situations', s.id]"
+  tabindex="0"
+>
+  <div class="card-text">
+    <h3>{{ s.title }}</h3>
+    <p>{{ s.description }}</p>
+  </div>
+
+  <div class="severity">
+    {{ getSeverityLabel(s.severity) }}
+  </div>
+</div>
+
+  </div>
+
+</section>

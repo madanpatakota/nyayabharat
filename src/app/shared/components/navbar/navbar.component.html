@@ -1,0 +1,97 @@
+<header class="misard-navbar">
+
+  <div class="nav-container">
+
+    <!-- BRAND -->
+    <!-- <div class="nav-brand" routerLink="/">
+      <span class="brand-name">Nyayabharat</span>
+      <span class="brand-tagline">Indian Law Awareness</span>
+    </div> -->
+    <div class="nav-brand" routerLink="/">
+  <div class="brand-row">
+    <svg class="law-icon" viewBox="0 0 64 64" aria-hidden="true">
+      <!-- Scale of Justice -->
+      <path d="M32 6v40" stroke="currentColor" stroke-width="3" />
+      <path d="M16 14h32" stroke="currentColor" stroke-width="3" />
+      <path d="M12 18l8 16 8-16" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M36 18l8 16 8-16" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M20 36c0 4 8 4 8 0" stroke="currentColor" stroke-width="2"/>
+      <path d="M44 36c0 4 8 4 8 0" stroke="currentColor" stroke-width="2"/>
+      <rect x="26" y="46" width="12" height="6" rx="2" fill="currentColor"/>
+    </svg>
+
+    <div class="brand-text">
+      <span class="brand-name">Nyayabharat</span>
+      <span class="brand-tagline">Indian Law Awareness</span>
+    </div>
+  </div>
+</div>
+
+
+    <!-- TOGGLE (MOBILE) -->
+   <button
+  class="nav-toggle"
+  aria-label="Toggle navigation"
+  (click)="toggleMobileMenu($event)">
+  ☰
+</button>
+
+
+    <!-- LINKS -->
+    <nav class="nav-links" [class.open]="menuOpen">
+<a routerLink="/situations" routerLinkActive="active" (click)="closeMenu()">
+  {{ translations['UI_NAV_SITUATIONS'] || '' }}
+</a>
+
+<a routerLink="/acts" routerLinkActive="active" (click)="closeMenu()">
+  {{ translations['UI_NAV_ACTS'] || '' }}
+</a>
+
+<a routerLink="/quiz" routerLinkActive="active" (click)="closeMenu()">
+  {{ translations['UI_NAV_QUIZ'] || '' }}
+</a>
+
+<a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">
+  {{ translations['UI_NAV_ABOUT'] || '' }}
+</a>
+
+</nav>
+
+ <!-- 🌐 LANGUAGE SELECTOR (ADD THIS) -->
+    <app-language-selector></app-language-selector>
+
+    <!-- AUTH ACTIONS -->
+<!-- AUTH ACTIONS -->
+<div class="auth-actions">
+
+  <!-- NOT LOGGED IN -->
+  <a
+    *ngIf="!user"
+    routerLink="/auth/login"
+    class="login-btn"
+    (click)="closeMenu()">
+    Login
+  </a>
+
+  <!-- LOGGED IN -->
+  <div *ngIf="user" class="user-menu">
+
+    <div class="user-trigger" (click)="toggleUserMenu($event)">
+
+      👤 {{ user.userName }}
+      <span class="arrow">▾</span>
+    </div>
+
+    <div class="user-dropdown" *ngIf="dropdownOpen">
+      <a routerLink="/user/dashboard" (click)="closeMenu()">Dashboard</a>
+      <a routerLink="/user/progress" (click)="closeMenu()">Progress</a>
+      <a (click)="logout()">Logout</a>
+    </div>
+
+  </div>
+
+</div>
+
+
+  </div>
+</header>

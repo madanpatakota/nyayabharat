@@ -1,0 +1,26 @@
+<section class="preview-section">
+
+  <h2 class="section-title">Explore Indian Laws</h2>
+
+  <p class="section-subtitle">
+    Learn laws directly from Bare Acts — explained for understanding, not memorising.
+  </p>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="loading">
+    Loading laws...
+  </div>
+
+  <!-- ACT CARDS -->
+  <div class="cards" *ngIf="!loading">
+    <div class="act-card" *ngFor="let act of acts">
+      <div class="act-badge">{{ act.actShortName }}</div>
+      <h3>{{ act.actName }}</h3>
+    </div>
+  </div>
+
+  <button class="view-all-btn" routerLink="/acts">
+    View all acts
+  </button>
+
+</section>

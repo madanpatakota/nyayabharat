@@ -1,0 +1,251 @@
+<section class="section-detail-root" *ngIf="section">
+
+  <!-- BREADCRUMB -->
+  <app-breadcrumb
+    [items]="[
+      { label: 'Acts', link: '/acts' },
+      { label: 'Chapters', link: '/chapters?actId=' + section.actId },
+      { label: 'Sections', link: '/sections?chapterId=' + section.chapterId },
+      { label: 'Section ' + section.sectionNumber }
+    ]">
+  </app-breadcrumb>
+
+  <!-- HEADER -->
+  <div class="section-header">
+    <div class="act-name">{{ section.actName }}</div>
+    <h1>
+      Section {{ section.sectionNumber }} – {{ section.sectionTitle }}
+    </h1>
+  </div>
+
+
+  <div class="bookmark-bar">
+  <button
+    class="bookmark-btn"
+    [class.active]="isBookmarked"
+    (click)="toggleBookmark()">
+
+    <span *ngIf="!isBookmarked">🔖 Bookmark</span>
+    <span *ngIf="isBookmarked">✅ Bookmarked</span>
+
+  </button>
+</div>
+
+
+  <!-- LAW TOGGLE -->
+  <div class="law-toggle" *ngIf="baseLaw">
+
+    <!-- IPC ⇄ BNS -->
+    <ng-container *ngIf="baseLaw === 'IPC'">
+      <button class="law-btn"
+              [class.active]="currentLaw === 'IPC'"
+              (click)="switchLaw('IPC')">
+        IPC
+      </button>
+
+      <button class="law-btn"
+              [class.active]="currentLaw === 'BNS'"
+              (click)="switchLaw('BNS')">
+        BNS 2023
+      </button>
+    </ng-container>
+
+    <!-- CRPC ⇄ BNSS -->
+    <ng-container *ngIf="baseLaw === 'CRPC'">
+      <button class="law-btn"
+              [class.active]="currentLaw === 'CRPC'"
+              (click)="switchLaw('CRPC')">
+        CrPC
+      </button>
+
+      <button class="law-btn"
+              [class.active]="currentLaw === 'BNSS'"
+              (click)="switchLaw('BNSS')">
+        BNSS 2023
+      </button>
+    </ng-container>
+
+  </div>
+
+  <app-back-nav label="Back to Sections"></app-back-nav>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab"
+            [class.active]="activeTab === 'explanation'"
+            (click)="setTab('explanation')">
+      Explanation
+    </button>
+
+    <button class="tab"
+            [class.active]="activeTab === 'legal'"
+            (click)="setTab('legal')">
+      Legal Text
+    </button>
+
+    <button class="tab"
+            [class.active]="activeTab === 'examples'"
+            (click)="setTab('examples')">
+      Examples
+    </button>
+
+    <button class="tab"
+            [class.active]="activeTab === 'amendments'"
+            (click)="setTab('amendments')">
+      Amendments
+    </button>
+
+    <button class="tab"
+        [class.active]="activeTab === 'judgments'"
+        (click)="setTab('judgments')">
+  Judgments
+</button>
+
+<button class="tab"
+        [class.active]="activeTab === 'appeal'"
+        (click)="setTab('appeal')">
+  Appeal Rights
+</button>
+
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- BASE LAW CONTENT -->
+    <ng-container *ngIf="currentLaw === baseLaw">
+
+      <div *ngIf="activeTab === 'explanation'">
+        <p>{{ section.explanation || 'Explanation not available.' }}</p>
+      </div>
+
+      <div *ngIf="activeTab === 'legal'">
+        <p class="legal-text">
+          {{ section.legalText || 'Legal text not available.' }}
+        </p>
+      </div>
+
+      <div *ngIf="activeTab === 'examples'">
+        <ul *ngIf="section.examples?.length; else noExamples">
+          <li *ngFor="let ex of section.examples">{{ ex }}</li>
+        </ul>
+
+        <ng-template #noExamples>
+          <p>No examples available.</p>
+        </ng-template>
+      </div>
+
+      <div *ngIf="activeTab === 'amendments'">
+        <div *ngIf="section.amendments?.length; else noAmendments">
+          <div class="amendment" *ngFor="let a of section.amendments">
+            <strong>{{ a.year }}</strong>
+            <span>{{ a.description }}</span>
+          </div>
+        </div>
+
+        <ng-template #noAmendments>
+          <p>No amendments recorded.</p>
+        </ng-template>
+      </div>
+
+      <!-- JUDGMENTS -->
+<div *ngIf="activeTab === 'judgments'">
+
+  <div *ngIf="judgmentsLoading">Loading judgments...</div>
+
+  <div *ngIf="!judgmentsLoading && judgments.length === 0">
+    No judgments linked to this section.
+  </div>
+
+  <div class="judgment-card"
+       *ngFor="let j of judgments">
+
+    <h4>{{ j.caseTitle }}</h4>
+    <div class="meta">
+      {{ j.courtLevel }} · {{ j.judgmentDate | date }}
+    </div>
+
+    <p>{{ j.summary }}</p>
+
+  </div>
+
+</div>
+
+      <!-- APPEAL RIGHTS -->
+<div *ngIf="activeTab === 'appeal'">
+
+  <div *ngIf="appealLoading">Loading appeal rights...</div>
+
+  <div *ngIf="!appealLoading && appealRights.length === 0">
+    No appeal information available.
+  </div>
+
+  <div class="appeal-card"
+       *ngFor="let a of appealRights">
+
+    <strong>{{ a.appealCourt }}</strong>
+    <span class="time">Time Limit: {{ a.timeLimit }}</span>
+
+    <p>{{ a.notes }}</p>
+
+  </div>
+
+</div>
+
+
+
+    </ng-container>
+
+    <!-- PARALLEL LAW CONTENT (BNS / BNSS) -->
+    <ng-container *ngIf="currentLaw !== baseLaw">
+
+      <ng-container *ngIf="parallelMapping?.mappingType !== 'Omitted'; else omittedTpl">
+        <div class="bns-card">
+          <h2>
+            {{ currentLaw }} Section {{ parallelMapping?.newSectionNumber }}
+          </h2>
+
+          <p class="bns-note">
+            Replaced {{ baseLaw }} Section {{ parallelMapping?.oldSectionNumber }}
+          </p>
+        </div>
+      </ng-container>
+
+      <ng-template #omittedTpl>
+        <div class="bns-card omitted">
+          <h2>No Equivalent Section</h2>
+          <p>{{ parallelMapping?.notes }}</p>
+        </div>
+      </ng-template>
+
+    </ng-container>
+
+  </div>
+
+  <!-- RELATED SITUATIONS -->
+  <div class="related-section" *ngIf="relatedSituations.length">
+    <h3>Related Situations</h3>
+
+    <div class="related-list">
+      <div class="related-card"
+           *ngFor="let s of relatedSituations"
+           [routerLink]="['/situations', s.situationId]">
+        <span class="title">{{ s.title }}</span>
+        <span class="severity">{{ s.severity }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ CTA -->
+  <div class="quiz-cta">
+    <div class="quiz-box">
+      <h3>Test your understanding</h3>
+      <p>Answer a few questions to check your understanding of this section.</p>
+
+      <button class="quiz-btn" (click)="startQuiz()">
+        Start Section Quiz
+      </button>
+    </div>
+  </div>
+
+</section>

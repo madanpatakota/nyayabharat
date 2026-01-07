@@ -1,0 +1,31 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="brand">
+      <h1>Create Account</h1>
+      <p>Join Nyayabharat Today</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+
+      <input placeholder="Username" formControlName="userName">
+      <input placeholder="Email" formControlName="email">
+      <input type="password" placeholder="Password" formControlName="password">
+      <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+
+      <div class="error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button class="btn-primary" [disabled]="loading">
+        {{ loading ? 'Creating account...' : 'Register' }}
+      </button>
+
+    </form>
+
+    <div class="auth-footer">
+      <a routerLink="/auth/login">Already have an account?</a>
+    </div>
+
+  </div>
+</div>

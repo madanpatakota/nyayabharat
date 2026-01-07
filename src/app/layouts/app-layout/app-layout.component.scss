@@ -1,0 +1,47 @@
+/* ================================
+   APP (AUTH) LAYOUT – MISARD STANDARD
+   ================================ */
+
+.layout-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f7fb; /* slightly deeper for logged-in area */
+}
+
+/* NAVBAR */
+app-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  background: #ffffff;
+  border-bottom: 1px solid #e6ebf1;
+}
+
+/* MAIN CONTENT */
+.layout-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 28px 24px;
+}
+
+/* FOOTER */
+app-footer {
+  margin-top: auto;
+}
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .layout-content {
+    padding: 22px 18px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .layout-content {
+    padding: 18px 14px;
+  }
+}

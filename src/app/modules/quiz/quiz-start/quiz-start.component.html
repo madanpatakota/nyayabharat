@@ -1,0 +1,67 @@
+<app-back-nav label="Back"></app-back-nav>
+
+<section class="quiz-start-root">
+
+  <!-- HEADER -->
+  <div class="quiz-header">
+    <h1>Check your understanding</h1>
+    <p class="subtitle">
+      This short quiz helps you confirm whether you understood the law correctly.
+    </p>
+  </div>
+
+  <!-- CONTEXT -->
+  <div class="quiz-context">
+
+    <!-- SECTION / SITUATION LABEL -->
+    <div class="context-row">
+      <span class="label">
+        {{ quizType === 'section' ? 'Section' : 'Situation' }}
+      </span>
+
+      <span class="value">
+        {{ title || 'Legal Knowledge Quiz' }}
+      </span>
+    </div>
+
+    <div class="context-row">
+      <span class="label">Questions</span>
+      <span class="value">{{ totalQuestions }}</span>
+    </div>
+
+    <div class="context-row">
+      <span class="label">Time</span>
+      <span class="value">{{ estimatedTime }}</span>
+    </div>
+
+  </div>
+
+  <!-- DIFFICULTY -->
+  <div class="difficulty-block">
+    <h3>Select difficulty</h3>
+
+    <div class="difficulty-list">
+      <div
+        class="difficulty-card"
+        *ngFor="let d of difficultyLevels"
+        [class.active]="selectedDifficulty === d.key"
+        (click)="selectedDifficulty = d.key"
+      >
+        <strong>{{ d.label }}</strong>
+        <span>{{ d.description }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTION -->
+  <div class="action-area">
+    <button class="start-btn" (click)="startQuiz()">
+      Start Quiz
+    </button>
+
+    <p class="note">
+      You can stop anytime. Your progress will be saved.
+    </p>
+  </div>
+
+</section>

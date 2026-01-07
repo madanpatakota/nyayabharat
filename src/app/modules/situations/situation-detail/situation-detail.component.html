@@ -1,0 +1,90 @@
+<section class="situation-detail-root" *ngIf="situation">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>{{ situation.title }}</h1>
+    <span class="severity">{{ situation.severity }}</span>
+  </div>
+
+  <app-back-nav label="Back to Situations"></app-back-nav>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button
+      class="tab"
+      [class.active]="activeTab === 'explanation'"
+      (click)="setTab('explanation')">
+      Explanation
+    </button>
+
+    <button
+      class="tab"
+      [class.active]="activeTab === 'laws'"
+      (click)="setTab('laws')">
+      Relevant Laws
+    </button>
+
+    <button
+      class="tab"
+      [class.active]="activeTab === 'guidance'"
+      (click)="setTab('guidance')">
+      What You Can Do
+    </button>
+  </div>
+
+  <!-- TAB CONTENT -->
+  <div class="tab-content">
+
+    <!-- EXPLANATION -->
+    <div *ngIf="activeTab === 'explanation'">
+      <p>{{ situation.description }}</p>
+    </div>
+
+    <!-- RELEVANT LAWS -->
+    <div *ngIf="activeTab === 'laws'">
+      <div *ngIf="situation.applicableSections?.length > 0; else noLaws">
+        
+       <div class="law-list">
+  <div
+    class="law-item link"
+    *ngFor="let law of situation.applicableSections"
+    [routerLink]="['/sections', law.sectionId]">
+
+    <div class="law-header">
+      <strong>
+        Section {{ law.sectionNumber }} ({{ law.actShortName }})
+      </strong>
+    </div>
+
+    <div class="law-body">
+      <span>{{ law.sectionTitle }}</span>
+    </div>
+
+  </div>
+</div>
+
+      </div>
+
+      <ng-template #noLaws>
+        <p>No relevant laws mapped.</p>
+      </ng-template>
+    </div>
+
+    <!-- WHAT YOU CAN DO -->
+    <div *ngIf="activeTab === 'guidance'">
+      <div *ngIf="situation.guidance?.length > 0; else noGuidance">
+        <ol>
+          <li *ngFor="let g of situation.guidance">
+            {{ g.guidanceText }}
+          </li>
+        </ol>
+      </div>
+
+      <ng-template #noGuidance>
+        <p>Guidance not available.</p>
+      </ng-template>
+    </div>
+
+  </div>
+
+</section>

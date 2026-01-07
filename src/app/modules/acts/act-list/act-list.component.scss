@@ -1,0 +1,172 @@
+.acts-page {
+  padding: 32px 16px 60px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* HEADER */
+.page-header {
+  text-align: center;
+  margin-bottom: 28px;
+
+  h1 {
+    color: #144164;
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  p {
+    color: #666;
+    font-size: 14px;
+  }
+}
+
+/* SEARCH */
+.acts-search {
+  max-width: 480px;
+  margin: 0 auto 24px;
+}
+
+.acts-search input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #dbe2ea;
+  outline: none;
+}
+
+.acts-search input:focus {
+  border-color: #144164;
+  box-shadow: 0 0 0 3px rgba(20, 65, 100, 0.15);
+}
+
+/* FILTERS */
+.acts-filters {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.filter {
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  border: 1px solid #e5eaf0;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.filter.active {
+  background: #144164;
+  color: #ffffff;
+  border-color: #144164;
+}
+
+/* PINNED */
+.pinned-acts {
+  margin-bottom: 40px;
+
+  h3 {
+    font-size: 16px;
+    color: #144164;
+    margin-bottom: 16px;
+  }
+}
+
+/* GRID */
+.acts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* CARD */
+.act-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #e6ebf1;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+}
+
+.act-card:hover,
+.act-card:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(20, 68, 100, 0.12);
+  border-color: #144164;
+  outline: none;
+}
+
+/* CARD TOP */
+.card-top {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top h3 {
+  color: #144164;
+  font-size: 18px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.badge {
+  background: #eaf2f9;
+  color: #144164;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.title {
+  color: #444;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* ACTION */
+.action {
+  margin-top: 16px;
+  color: #144164;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* EMPTY */
+.empty {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .acts-page {
+    padding: 24px 14px;
+  }
+
+  .act-card {
+    min-height: auto;
+  }
+}
+.sub-type {
+  font-size: 12px;
+  color: #777;
+}

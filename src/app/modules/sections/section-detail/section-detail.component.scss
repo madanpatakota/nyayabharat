@@ -1,0 +1,332 @@
+/* ======================================================
+   NYAYABHARAT – SECTION DETAIL
+   MISARD CLASSIC PROFESSIONAL THEME
+   ====================================================== */
+
+/* ROOT */
+.section-detail-root {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 42px 20px 64px;
+}
+
+/* HEADER */
+.section-header {
+  margin-bottom: 28px;
+}
+
+.act-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.section-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #144164;
+  line-height: 1.35;
+}
+
+/* LAW TOGGLE */
+.law-toggle {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0 24px;
+
+  .law-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid #cfd8dc;
+    background: #f4f6f8;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &.active {
+      background: #144264;
+      color: #ffffff;
+      border-color: #144264;
+    }
+  }
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid #e6eaf0;
+  margin-bottom: 26px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: #144164;
+  }
+
+  &.active {
+    color: #144164;
+    font-weight: 600;
+    border-bottom-color: #144164;
+  }
+}
+
+/* CONTENT */
+.content {
+  p,
+  li {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #374151;
+  }
+}
+
+/* LEGAL TEXT */
+.legal-text {
+  background: #f9fafb;
+  border: 1px solid #e6eaf0;
+  padding: 18px 20px;
+  border-radius: 12px;
+  font-family: Georgia, serif;
+  font-size: 15px;
+}
+
+/* AMENDMENTS */
+.amendment {
+  background: #ffffff;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+
+  strong {
+    display: block;
+    font-size: 14px;
+    color: #144164;
+    margin-bottom: 4px;
+  }
+
+  span {
+    font-size: 14px;
+    color: #6b7280;
+  }
+}
+
+/* PARALLEL LAW / BNS */
+.bns-card,
+.parallel-card {
+  background: #f8fbff;
+  border-left: 4px solid #144264;
+  padding: 16px 18px;
+  margin-top: 20px;
+  border-radius: 8px;
+
+  h2 {
+    font-size: 18px;
+    color: #144164;
+    margin-bottom: 6px;
+  }
+
+  &.omitted {
+    background: #fff5f5;
+    border-color: #c62828;
+  }
+}
+
+/* RELATED SITUATIONS */
+.related-section {
+  margin-top: 52px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #144164;
+    margin-bottom: 16px;
+  }
+}
+
+.related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.related-card {
+  background: #ffffff;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(20, 65, 100, 0.05);
+  }
+
+  .title {
+    font-size: 14px;
+    color: #374151;
+  }
+
+  .severity {
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    color: #475569;
+  }
+}
+
+/* QUIZ CTA */
+.quiz-cta {
+  margin-top: 58px;
+}
+
+.quiz-box {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 65, 100, 0.08),
+    rgba(20, 65, 100, 0.02)
+  );
+  border: 1px solid rgba(20, 65, 100, 0.15);
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+
+  h3 {
+    font-size: 20px;
+    color: #144164;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 20px;
+  }
+}
+
+.quiz-btn {
+  background-color: #144164;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  &:hover {
+    background-color: #0f3450;
+    transform: translateY(-1px);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .section-detail-root {
+    padding: 28px 16px 48px;
+  }
+
+  .section-header h1 {
+    font-size: 22px;
+  }
+
+  .tabs {
+    overflow-x: auto;
+  }
+
+  .tab {
+    white-space: nowrap;
+  }
+
+  .related-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .quiz-box {
+    padding: 22px 18px;
+  }
+}
+
+
+.judgment-card,
+.appeal-card {
+  background: #ffffff;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 14px;
+}
+
+.judgment-card h4 {
+  font-size: 15px;
+  color: #144164;
+  margin-bottom: 4px;
+}
+
+.judgment-card .meta {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.appeal-card strong {
+  display: block;
+  font-size: 14px;
+  color: #144164;
+}
+
+.appeal-card .time {
+  font-size: 12px;
+  color: #475569;
+  display: block;
+  margin-bottom: 6px;
+}
+
+
+.bookmark-bar {
+  margin: 12px 0 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bookmark-btn {
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid #dbe2ea;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #144164;
+}
+
+.bookmark-btn.active {
+  background: #144164;
+  color: #ffffff;
+  border-color: #144164;
+}
+
+.bookmark-btn:hover {
+  box-shadow: 0 6px 14px rgba(20, 65, 100, 0.15);
+}

@@ -1,0 +1,80 @@
+<section class="acts-page">
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <h1>Indian Laws</h1>
+    <p>Explore Acts as per Indian Bare Law structure</p>
+  </header>
+
+  <!-- SEARCH -->
+  <div class="acts-search">
+    <input
+      #searchInput
+      type="text"
+      placeholder="Search an Act (IPC, CrPC, Constitution, IT Act...)"
+      (input)="onSearch(searchInput.value)"
+    />
+  </div>
+
+  <!-- FILTERS -->
+  <div class="acts-filters">
+    <button class="filter" [class.active]="selectedType === 'All'" (click)="selectType('All')">All</button>
+    <button class="filter" [class.active]="selectedType === 'Core'" (click)="selectType('Core')">Core Criminal</button>
+    <button class="filter" [class.active]="selectedType === 'Constitutional'" (click)="selectType('Constitutional')">Constitutional</button>
+    <button class="filter" [class.active]="selectedType === 'Special'" (click)="selectType('Special')">Special Acts</button>
+    <button class="filter" [class.active]="selectedType === 'Repealed'" (click)="selectType('Repealed')">Repealed</button>
+  </div>
+
+  <!-- PINNED ACTS -->
+  <section class="pinned-acts" *ngIf="pinnedActs.length">
+    <h3>Most Referred Laws</h3>
+
+    <div class="acts-grid pinned">
+      <div
+        class="act-card"
+        *ngFor="let act of pinnedActs"
+        [routerLink]="['/acts', act.actId]"
+      >
+        <div class="card-top">
+          <div class="top">
+            <h3>{{ act.actShortName }}</h3>
+            <span class="badge">{{ act.displayBadge }}</span>
+          </div>
+
+          <p class="title">{{ act.actName }}</p>
+          <small class="sub-type">{{ act.subType }}</small>
+        </div>
+
+        <span class="action">Explore Sections →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTS GRID -->
+  <div class="acts-grid" *ngIf="!loading">
+    <div
+      class="act-card"
+      *ngFor="let act of filteredActs; trackBy: trackById"
+      [routerLink]="['/acts', act.actId]"
+      tabindex="0"
+    >
+      <div class="card-top">
+        <div class="top">
+          <h3>{{ act.actShortName }}</h3>
+          <span class="badge">{{ act.displayBadge }}</span>
+        </div>
+
+        <p class="title">{{ act.actName }}</p>
+        <small class="sub-type">{{ act.subType }}</small>
+      </div>
+
+      <span class="action">Explore Sections →</span>
+    </div>
+  </div>
+
+  <!-- EMPTY -->
+  <div class="empty" *ngIf="!loading && filteredActs.length === 0">
+    No Acts found.
+  </div>
+
+</section>

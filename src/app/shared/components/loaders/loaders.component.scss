@@ -1,0 +1,39 @@
+.global-loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(246, 248, 251, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.justice-icon {
+  width: 56px;
+  height: 56px;
+  stroke: #144164;
+  fill: none;
+  stroke-width: 2.5;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.justice-icon rect,
+.justice-icon path {
+  fill: #144164;
+  stroke: none;
+}
+
+.loader-text {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.6; }
+}

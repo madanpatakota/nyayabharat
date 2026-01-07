@@ -1,0 +1,95 @@
+<app-back-nav label="Back"></app-back-nav>
+
+<section class="quiz-result-root">
+
+  <!-- ACT BADGE -->
+  <div class="act-badge" *ngIf="actShortName">
+    <span class="badge">{{ actShortName }}</span>
+    <span class="badge-name">{{ actName }}</span>
+  </div>
+
+  <!-- HEADER -->
+  <div class="result-header">
+    <h1>Quiz Completed</h1>
+    <p class="subtitle">
+      Your legal understanding has been carefully evaluated.
+    </p>
+  </div>
+
+  <!-- SCORE CARD -->
+  <div class="score-card">
+
+   <div
+  class="score-ring"
+  [style.--value]="scorePercent"
+>
+  <span class="percent">{{ scorePercent }}%</span>
+  <span class="label">Score</span>
+</div>
+
+
+    <div class="score-info">
+      <h3>{{ sectionTitle }}</h3>
+      <p>
+        You answered
+        <strong>{{ correctAnswers }}</strong> of
+        <strong>{{ totalQuestions }}</strong> questions correctly.
+      </p>
+
+      <div class="score-meta">
+        <span>Accuracy: {{ scorePercent }}%</span>
+        <span>Attempted: {{ totalQuestions }}</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GUIDANCE -->
+  <div class="guidance-box">
+    <p>
+      This result reflects your current grasp of the law.
+      Revisiting the section or practicing related situations
+      will strengthen your clarity and confidence.
+    </p>
+  </div>
+
+  <!-- REVIEW ANSWERS -->
+  <div class="review-section" *ngIf="questions.length">
+
+    <h3 class="review-title">Answer Review</h3>
+
+    <div class="review-card" *ngFor="let q of questions; let i = index">
+
+      <h4 class="question">
+        {{ i + 1 }}. {{ q.questionText }}
+      </h4>
+
+      <ul class="options">
+        <li
+          *ngFor="let opt of q.options"
+          [class.correct]="opt.isCorrect"
+          [class.selected]="answers[q.questionId] === opt.optionId"
+        >
+          {{ opt.optionText }}
+        </li>
+      </ul>
+
+      <div
+        class="answer-status"
+        [class.ok]="isCorrect(q)"
+        [class.wrong]="!isCorrect(q)"
+      >
+        {{ isCorrect(q) ? 'Correct Answer' : 'Needs Revision' }}
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions">
+    <button class="primary" (click)="retryQuiz()">Try Again</button>
+    <button class="secondary" (click)="goToSection()">Review Section</button>
+    <button class="link" (click)="goToSituations()">Explore Situations</button>
+  </div>
+
+</section>

@@ -1,0 +1,56 @@
+<section class="dashboard-root">
+
+  <!-- WELCOME -->
+  <header class="welcome">
+    <h1>Welcome back, {{ userName }}</h1>
+    <p>Your personal space to learn and understand Indian law.</p>
+  </header>
+
+  <!-- STATS -->
+  <section class="stats-grid">
+    <div class="stat-card" *ngFor="let s of stats">
+      <div class="stat-value">{{ s.value }}</div>
+      <div class="stat-label">{{ s.label }}</div>
+    </div>
+  </section>
+
+  <!-- MAIN GRID -->
+  <section class="main-grid">
+
+    <!-- CONTINUE LEARNING -->
+    <div class="panel continue-panel">
+      <h3>Continue where you left off</h3>
+      <p class="title">{{ continueLearning.title }}</p>
+      <p class="subtitle">{{ continueLearning.subtitle }}</p>
+
+      <a class="primary-link" [routerLink]="continueLearning.path">
+        Resume learning →
+      </a>
+    </div>
+
+    <!-- RECENT QUIZ -->
+    <div class="panel quiz-panel">
+      <h3>Recent quiz</h3>
+      <p class="quiz-title">{{ recentQuiz.title }}</p>
+
+      <div class="quiz-meta">
+        <span class="score">{{ recentQuiz.score }}</span>
+        <span class="date">{{ recentQuiz.date }}</span>
+      </div>
+
+      <a class="secondary-link" routerLink="/quiz/start/341">
+        Try again →
+      </a>
+    </div>
+
+  </section>
+
+  <!-- GUIDANCE -->
+  <section class="guidance">
+    <p>
+      Tip: Exploring real-life situations helps you understand how law applies
+      beyond textbook sections.
+    </p>
+  </section>
+
+</section>

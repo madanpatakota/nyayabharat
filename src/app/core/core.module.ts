@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-
-import { NavbarComponent } from './layout/navbar/navbar.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { ShellComponent } from './layout/shell/shell.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
-  declarations: [NavbarComponent, FooterComponent, ShellComponent],
-  imports: [CommonModule, RouterModule],            // RouterModule needed for router-outlet in Shell
-  exports: [NavbarComponent, FooterComponent, ShellComponent]  // 👈 export Shell
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ]
 })
 export class CoreModule {}

@@ -1,0 +1,90 @@
+.about-root {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 16px 100px;
+  font-family: "Inter", sans-serif;
+  color: #1f2d3d;
+}
+
+/* HEADER */
+
+.about-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.about-header h1 {
+  font-size: clamp(30px, 5vw, 40px);
+  font-weight: 700;
+  color: #144164;
+  margin-bottom: 14px;
+}
+
+.about-header p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4a5d73;
+}
+
+/* CONTENT BLOCKS */
+
+.about-block {
+  margin-bottom: 44px;
+}
+
+.about-block h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #144164;
+  margin-bottom: 14px;
+}
+
+.about-block p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #3f4f63;
+  margin-bottom: 12px;
+}
+
+/* LISTS */
+
+.about-block ul {
+  padding-left: 18px;
+}
+
+.about-block li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #3f4f63;
+  margin-bottom: 8px;
+}
+
+/* HIGHLIGHT BLOCK */
+
+.about-block.highlight {
+  padding: 26px 24px;
+  border-left: 4px solid #7b3fe4;
+  background: #f6f4ff;
+  border-radius: 8px;
+}
+
+/* FOOTER */
+
+.about-footer {
+  margin-top: 70px;
+  text-align: center;
+  font-size: 13px;
+  color: #6a7f95;
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .about-root {
+    padding-top: 40px;
+  }
+
+  .about-header p {
+    font-size: 15px;
+  }
+}

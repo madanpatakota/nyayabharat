@@ -1,0 +1,40 @@
+@import 'src/styles/sections/preview-section';
+
+.preview-section {
+  background: #f6f8fb;
+}
+
+.act-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  width: 260px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.act-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.act-badge {
+  background: #144164;
+  color: #ffffff;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.act-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #144164;
+}

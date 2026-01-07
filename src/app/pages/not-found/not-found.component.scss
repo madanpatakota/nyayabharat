@@ -1,0 +1,109 @@
+.not-found-root {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background: linear-gradient(
+    180deg,
+    #f6f9fc 0%,
+    #ffffff 100%
+  );
+}
+
+.nf-card {
+  max-width: 520px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 48px 32px;
+  text-align: center;
+  border: 1px solid #e6ebf1;
+  box-shadow: 0 30px 70px rgba(20, 68, 100, 0.12);
+}
+
+.nf-code {
+  font-size: 72px;
+  font-weight: 800;
+  color: #7b3fe4; /* Misard purple accent */
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+
+.nf-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #144164;
+  margin-bottom: 12px;
+}
+
+.nf-message {
+  font-size: 14px;
+  color: #5f7386;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.nf-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primary-btn {
+  background: linear-gradient(
+    135deg,
+    #7b3fe4,
+    #5b2fb8
+  );
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(123, 63, 228, 0.35);
+}
+
+.secondary-btn {
+  border: 1px solid #7b3fe4;
+  color: #7b3fe4;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.secondary-btn:hover {
+  background: #f4efff;
+}
+
+.nf-footer-note {
+  margin-top: 36px;
+  font-size: 12px;
+  color: #7a8ea3;
+  line-height: 1.5;
+}
+
+/* MOBILE POLISH */
+@media (max-width: 480px) {
+  .nf-card {
+    padding: 36px 20px;
+  }
+
+  .nf-code {
+    font-size: 56px;
+  }
+
+  .nf-title {
+    font-size: 20px;
+  }
+}

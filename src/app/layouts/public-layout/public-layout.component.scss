@@ -1,0 +1,92 @@
+/* ================================
+   PUBLIC LAYOUT – MISARD PREMIUM
+   ================================ */
+
+.layout-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f9fc;
+}
+
+/* NAVBAR */
+app-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;
+}
+
+/* BODY SPLIT */
+.layout-body {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  // max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* MAIN CONTENT */
+.layout-content {
+  flex: 1;
+  // padding: 28px 24px;
+}
+
+/* RIGHT LAW VISUAL */
+.law-visual {
+  width: 420;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 32px;
+}
+
+.law-visual{
+  align-items: flex-start;
+  padding-top: 0px;
+}
+
+
+.law-visual img {
+  width: 100%;
+  max-width: 380px;;
+  height: auto;
+  opacity: 0.95;
+}
+
+/* FOOTER */
+app-footer {
+  margin-top: auto;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .layout-body {
+    flex-direction: column;
+  }
+
+  .law-visual {
+    display: none;
+  }
+
+  .layout-content {
+    padding: 22px 18px;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 640px) {
+  .layout-content {
+    padding: 18px 14px;
+  }
+}
+
+.law-visual {
+  align-items: flex-start;
+  padding-top: 40px;
+}

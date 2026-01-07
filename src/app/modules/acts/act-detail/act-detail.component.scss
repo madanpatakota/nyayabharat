@@ -1,0 +1,184 @@
+/* ==================================================
+   ACT DETAIL – SCALABLE CHAPTER DESIGN
+   ================================================== */
+
+.act-detail-page {
+  padding: 32px 16px 60px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* HEADER */
+.act-header {
+  margin-bottom: 20px;
+}
+
+.act-name {
+  font-size: 28px;
+  font-weight: 600;
+  color: #144164;
+  margin-bottom: 10px;
+}
+
+.act-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-size: 14px;
+  color: #555;
+}
+
+.meta-item {
+  background: #f4f7fa;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.status {
+  background: #e7f1fb;
+  color: #144164;
+  font-weight: 600;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: #e6ebf1;
+  margin: 24px 0;
+}
+
+/* ==================================================
+   CHAPTER SEARCH (KEY FOR LARGE DATA)
+   ================================================== */
+
+.chapter-search {
+  margin: 12px 0 24px;
+  position: sticky;
+  top: 72px; /* below navbar */
+  background: #ffffff;
+  padding: 10px 0;
+  z-index: 5;
+}
+
+.chapter-search input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #dbe2ea;
+  outline: none;
+}
+
+.chapter-search input:focus {
+  border-color: #144164;
+  box-shadow: 0 0 0 3px rgba(20, 65, 100, 0.15);
+}
+
+/* ==================================================
+   CHAPTER LIST
+   ================================================== */
+
+.chapters-section {
+  margin-top: 10px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #144164;
+  margin-bottom: 16px;
+}
+
+.chapters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* GROUP TITLE (OPTIONAL – FOR MANY RECORDS) */
+.group-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 22px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* CHAPTER CARD */
+.chapter-card {
+  background: #ffffff;
+  border: 1px solid #e6ebf1;
+  border-radius: 14px;
+  padding: 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: all 0.25s ease;
+}
+
+.chapter-card:hover {
+  border-color: #144164;
+  box-shadow: 0 10px 24px rgba(20, 68, 100, 0.12);
+}
+
+/* CHAPTER INFO */
+.chapter-info {
+  max-width: 75%;
+}
+
+.chapter-number {
+  font-size: 12px;
+  color: #777;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.chapter-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+/* LINK */
+.view-sections {
+  font-size: 14px;
+  font-weight: 600;
+  color: #144164;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.view-sections:hover {
+  text-decoration: underline;
+}
+
+/* ==================================================
+   MOBILE OPTIMIZATION
+   ================================================== */
+
+@media (max-width: 768px) {
+
+  .act-name {
+    font-size: 24px;
+  }
+
+  .chapter-search {
+    top: 64px;
+    padding: 8px 0;
+  }
+
+  .chapter-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .chapter-info {
+    max-width: 100%;
+  }
+}

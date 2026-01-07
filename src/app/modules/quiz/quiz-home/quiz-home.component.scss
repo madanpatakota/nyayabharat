@@ -1,0 +1,101 @@
+.quiz-home {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.quiz-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #144164;
+  margin-bottom: 12px;
+}
+
+.quiz-header p {
+  font-size: 15px;
+  color: #5f7386;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.quiz-card {
+  background: #ffffff;
+  border: 1px solid #e6ebf1;
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.25s ease;
+}
+
+.quiz-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #144164;
+  margin-bottom: 10px;
+}
+
+.quiz-card p {
+  font-size: 14px;
+  color: #4f6478;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.quiz-card button {
+  background: none;
+  border: none;
+  color: #7b3fe4;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.quiz-card button:hover {
+  text-decoration: underline;
+}
+
+.quiz-card:hover {
+  border-color: #7b3fe4;
+  box-shadow: 0 14px 36px rgba(20, 68, 100, 0.12);
+  transform: translateY(-4px);
+}
+
+.quiz-card.subtle {
+  background: #f7f8fc;
+}
+
+.quiz-card.subtle button {
+  color: #9aa7b4;
+  cursor: not-allowed;
+}
+
+.quiz-note {
+  margin-top: 48px;
+  text-align: center;
+  font-size: 13px;
+  color: #6a7f92;
+}
+
+@media (max-width: 1024px) {
+  .quiz-options {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .quiz-options {
+    grid-template-columns: 1fr;
+  }
+}

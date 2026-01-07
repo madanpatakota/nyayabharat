@@ -1,0 +1,58 @@
+<section class="sections-page">
+
+<app-breadcrumb [items]="breadcrumbs"></app-breadcrumb>
+
+
+
+  <!-- HEADER -->
+  <header class="sections-header">
+<h1>Sections</h1>
+<p>Select a section to view explanation, punishment and judgments</p>
+
+  </header>
+
+  <!-- SEARCH (✔ CORRECT PLACE) -->
+  <div class="section-search">
+    <input
+      #sectionSearch
+      type="text"
+      placeholder="Search section (e.g. 302, Punishment, Murder...)"
+      (input)="onSearch(sectionSearch.value)"
+    />
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading" *ngIf="loading">
+    Loading sections…
+  </div>
+
+  <!-- EMPTY -->
+  <div class="empty-state" *ngIf="!loading && filteredSections.length === 0">
+    No sections available for this chapter.
+  </div>
+
+  <!-- LIST -->
+  <div class="sections-list" *ngIf="!loading">
+   <div
+  class="section-card"
+  *ngFor="let section of filteredSections; trackBy: trackBySection"
+  [routerLink]="['/sections', section.sectionId]"
+  (keyup.enter)="openSection(section.sectionId)"
+  tabindex="0"
+>
+
+      <div class="section-left">
+        <span class="section-number">
+          Section {{ section.sectionNumber }}
+        </span>
+
+        <h3 class="section-title">
+          {{ section.sectionTitle }}
+        </h3>
+      </div>
+
+      <span class="arrow">→</span>
+    </div>
+  </div>
+
+</section>

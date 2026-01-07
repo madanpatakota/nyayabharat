@@ -1,0 +1,50 @@
+<app-back-nav label="Back to Acts"></app-back-nav>
+
+<app-breadcrumb
+  [items]="[
+    { label: 'Acts', link: '/acts' },
+    { label: actShortName || 'Act', link: '/acts' },
+    { label: 'Chapters' }
+  ]">
+</app-breadcrumb>
+
+<div class="chapter-root">
+
+  <!-- HEADER -->
+  <div class="chapter-header">
+    <h1>{{ actName }}</h1>
+    <p>Chapters under {{ actShortName }}</p>
+  </div>
+
+  <!-- CHAPTERS GRID -->
+  <div class="chapter-grid" *ngIf="!loading && chapters.length">
+
+    <div
+      class="chapter-card"
+      *ngFor="let ch of chapters; trackBy: trackByChapter"
+      (click)="openChapter(ch.chapterId)"
+      (keyup.enter)="openChapter(ch.chapterId)"
+      tabindex="0"
+    >
+      <div class="chapter-no">
+        Chapter {{ ch.chapterNumber }}
+      </div>
+
+      <div class="chapter-title">
+        {{ ch.chapterTitle }}
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EMPTY STATE -->
+  <div class="empty" *ngIf="!loading && chapters.length === 0">
+    Chapters will be added soon for this Act.
+  </div>
+
+  <!-- LOADING -->
+  <div class="loading" *ngIf="loading">
+    Loading chapters...
+  </div>
+
+</div>

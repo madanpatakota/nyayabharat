@@ -1,0 +1,41 @@
+<section class="preview-section">
+
+  <h2 class="section-title">Real-Life Legal Situations</h2>
+
+  <p class="section-subtitle">
+    Understand the law through real situations you may face in daily life.
+  </p>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="loading">
+    Loading situations...
+  </div>
+
+  <!-- SITUATION CARDS -->
+  <div class="cards" *ngIf="!loading">
+    <div class="situation-card" *ngFor="let situation of situations">
+      
+      <div class="severity-badge severity-{{ situation.severity }}">
+        Severity {{ situation.severity }}
+      </div>
+
+      <h3>{{ situation.title }}</h3>
+
+      <p class="desc">
+        {{ situation.description | truncate:120 }}
+      </p>
+
+      <a
+        class="view-link"
+        [routerLink]="['/api/situations', situation.situationId]">
+        View applicable law →
+      </a>
+
+    </div>
+  </div>
+
+  <button class="view-all-btn" routerLink="/situations">
+    View all situations
+  </button>
+
+</section>

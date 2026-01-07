@@ -1,0 +1,88 @@
+ 
+ <!-- Default show while open the page -->
+<section class="hero-section" data-aos="fade-up">
+  <div class="container hero-container">
+    <div class="hero-grid">
+
+      <!-- LEFT CONTENT -->
+      <div class="hero-left">
+        <h1 class="hero-title">
+          Empowering Every Citizen With the Knowledge of Indian Law
+        </h1>
+
+        <p class="hero-subtitle">
+          Browse IPC, CrPC, Constitution, punishments, examples, history, and multilingual content.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary">Explore IPC</button>
+          <button class="btn btn-light">Search Section</button>
+        </div>
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div class="hero-right">
+        <img
+          src="assets/images/indian-law-illustration.png"
+          class="hero-img"
+          alt="Justice"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Separate Seciton -->
+<section class="home-root">
+ 
+  <div class="home-container">
+
+    <!-- HERO (can be translated later same way) -->
+    <div class="hero">
+      <h1>
+        Indian Law,<br />
+        Made Simple for Everyone
+      </h1>
+      <p>
+        Nyayabharat helps you understand Indian laws calmly and clearly,
+        using real-life situations instead of complex legal language.
+      </p>
+    </div>
+
+    <!-- PRIMARY ACTIONS -->
+    <div class="actions">
+      <button
+        class="action-card"
+        *ngFor="let action of actions"
+        [routerLink]="action.route"
+      >
+        <div class="text">
+          <span class="title">
+            {{ translations[action.titleKey] || '' }}
+          </span>
+          <span class="desc">
+            {{ translations[action.descKey] || '' }}
+          </span>
+        </div>
+        <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <app-loader *ngIf="loadingActs"></app-loader>
+
+    <!-- ACTS PREVIEW -->
+    <app-acts-preview-section
+      [acts]="acts"
+      [loading]="loadingActs">
+    </app-acts-preview-section>
+
+    <!-- SITUATIONS PREVIEW -->
+    <app-situations-preview-section
+      [situations]="situations"
+      [loading]="loadingSituations">
+    </app-situations-preview-section>
+
+  </div>
+</section>

@@ -1,0 +1,28 @@
+@import 'src/styles/sections/preview-section';
+
+.situation-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 26px;
+  width: 280px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.situation-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+.icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+.situation-card h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #144164;
+  line-height: 1.4;
+}
