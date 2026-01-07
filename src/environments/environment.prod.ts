@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://api.nyayabharat.com/api'
+  apiBaseUrl: 'https://nyiqapis-e8fyf7bbcgademdz.southindia-01.azurewebsites.net'
 };
