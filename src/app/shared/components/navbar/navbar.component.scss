@@ -1,18 +1,17 @@
 /* =========================================
-   NYAYABHARAT NAVBAR – MOBILE FIRST
-   Works on ALL devices
+   NYAYABHARAT NAVBAR – FINAL
+   Mobile-first • Stable • Clean
    ========================================= */
 
 .misard-navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  width: 100%;
   background: #0e2b47;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-/* ================= CONTAINER ================= */
+/* CONTAINER */
 .nav-container {
   display: flex;
   align-items: center;
@@ -21,11 +20,7 @@
   gap: 12px;
 }
 
-/* ================= BRAND ================= */
-.nav-brand {
-  cursor: pointer;
-}
-
+/* BRAND */
 .brand-row {
   display: flex;
   align-items: center;
@@ -35,20 +30,13 @@
 .law-icon {
   width: 36px;
   height: 36px;
-  color: #ffffff;
-  flex-shrink: 0;
-}
-
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
+  color: #fff;
 }
 
 .brand-name {
   font-size: 16px;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff;
 }
 
 .brand-tagline {
@@ -56,16 +44,16 @@
   color: rgba(255,255,255,0.75);
 }
 
-/* ================= TOGGLE ================= */
+/* TOGGLE */
 .nav-toggle {
   font-size: 22px;
   background: none;
   border: none;
-  color: #ffffff;
+  color: #fff;
   cursor: pointer;
 }
 
-/* ================= LINKS (MOBILE) ================= */
+/* MOBILE MENU */
 .nav-links {
   position: absolute;
   top: 100%;
@@ -83,7 +71,7 @@
 
 .nav-links a {
   padding: 14px 20px;
-  color: #ffffff;
+  color: #fff;
   text-decoration: none;
   font-size: 15px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -94,7 +82,13 @@
   font-weight: 600;
 }
 
-/* ================= AUTH ================= */
+/* MOBILE LOGIN */
+.mobile-login {
+  font-weight: 600;
+  background: rgba(255,255,255,0.05);
+}
+
+/* DESKTOP AUTH HIDDEN ON MOBILE */
 .auth-actions {
   display: none;
 }
@@ -114,7 +108,6 @@
     position: static;
     display: flex;
     flex-direction: row;
-    width: auto;
     background: transparent;
     border: none;
     gap: 26px;
@@ -123,7 +116,10 @@
   .nav-links a {
     padding: 0;
     border: none;
-    font-size: 15px;
+  }
+
+  .mobile-login {
+    display: none;
   }
 
   .auth-actions {
@@ -133,7 +129,7 @@
   }
 
   .login-btn {
-    color: #ffffff;
+    color: #fff;
     font-weight: 600;
     text-decoration: none;
   }
@@ -143,7 +139,7 @@
   }
 
   .user-trigger {
-    color: #ffffff;
+    color: #fff;
     cursor: pointer;
     font-weight: 600;
   }
@@ -152,11 +148,10 @@
     position: absolute;
     top: 130%;
     right: 0;
-    background: #ffffff;
+    background: #fff;
     border-radius: 8px;
     min-width: 180px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-    overflow: hidden;
   }
 
   .user-dropdown a {
@@ -164,10 +159,68 @@
     padding: 12px 14px;
     color: #144164;
     text-decoration: none;
-    font-size: 14px;
+  }
+}
+
+
+/* ===== BRAND TEXT FIX (MOBILE SAFE) ===== */
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;          /* ❗ prevents word merging */
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 11px;
+  line-height: 1.2;
+  opacity: 0.85;
+}
+
+
+@media (max-width: 420px) {
+
+  .nav-container {
+    gap: 8px;
   }
 
-  .user-dropdown a:hover {
-    background: #f3f6fb;
+  .nav-brand {
+    max-width: 60%;   /* 🔑 KEY FIX */
   }
+
+  .brand-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
+@media (min-width: 992px) {
+
+  /* MAIN FLEX CONTROL */
+  .nav-container {
+    align-items: center;
+  }
+
+  /* CENTER NAVIGATION */
+  .nav-links {
+    flex: 1;                     /* 🔑 KEY FIX */
+    justify-content: center;
+  }
+
+  /* RIGHT SIDE GROUPING */
+  app-language-selector {
+    margin-left: auto;           /* 🔑 pushes right */
+  }
+
+  .auth-actions {
+    margin-left: 12px;
+  }
+
 }
